@@ -167,6 +167,47 @@ html<style>/* About section enhancement */
         padding: 3rem 0;
         text-align: center;
     }
+    /* Services section */
+.services {
+    background-color: var(--secondary-color);
+}
+
+.section-subheading {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #64748b;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 </style>
 </style></>
 <body>
@@ -211,13 +252,28 @@ html<style>/* About section enhancement */
     </div>
 </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a content strategist helping businesses communicate effectively.</p>
+   <!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-heading">How I Can Help You</h2>
+        <p class="section-subheading">Strategic content solutions tailored to your business needs</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Content Audit & Analysis</h3>
+                <p>Discover what's working, what's not, and why. I'll analyze your existing content and provide actionable insights to improve performance.</p>
+            </div>
+            <div class="service-card">
+                <h3>Content Strategy Development</h3>
+                <p>Get a comprehensive content strategy aligned with your business goals, audience needs, and current market trends.</p>
+            </div>
+            <div class="service-card">
+                <h3>Content Creation & Optimization</h3>
+                <p>From blog posts to email campaigns, I'll create compelling content that resonates with your audience and drives results.</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
