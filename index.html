@@ -466,4 +466,43 @@
                     </div>
                     <div class="form-group">
                         <label for="message">How can I help you?</label>
-                        <textarea id="message" name="message" r
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+                            
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Name | Content Strategist</p>
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Email</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Mobile menu script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+          });
+        });
+      });
+    </script>
+</body>
+</html>
