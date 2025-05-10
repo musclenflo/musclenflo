@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Content Strategist</title>
+    
+    <!-- Add Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         /* Base styles */
         :root {
             --primary-color: #0f172a;
@@ -22,13 +33,14 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: #ffffff;
         }
         
         h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
             margin-bottom: 1rem;
             font-weight: 700;
             line-height: 1.2;
@@ -88,6 +100,51 @@
             margin-left: 2rem;
         }
         
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        }
+        
         /* Hero section */
         .hero {
             height: 100vh;
@@ -121,62 +178,46 @@
             margin-bottom: 2rem;
             text-align: center;
         }
-
+        
         .about-container {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
-
+        
         .about-content p {
             text-align: left;
             margin-bottom: 1rem;
         }
-
+        
         .about-image {
             text-align: center;
         }
-
+        
         .about-image img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        /* Media query for larger screens */
-        @media (min-width: 768px) {
-            .about-container {
-                flex-direction: row;
-                align-items: center;
-            }
-
-            .about-content {
-                flex: 1;
-            }
-
-            .about-image {
-                flex: 1;
-            }
-        }
         
         /* Services section */
         .services {
             background-color: var(--secondary-color);
         }
-
+        
         .section-subheading {
             text-align: center;
             margin-bottom: 3rem;
             color: #64748b;
         }
-
+        
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-
+        
         .service-card {
             background-color: white;
             padding: 2rem;
@@ -184,22 +225,43 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
+        
         .service-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-
+        
         .service-card h3 {
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-
-        /* Media query for larger screens */
-        @media (min-width: 768px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        
+        /* Testimonials section */
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 5rem 0;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+        }
+        
+        .client-name {
+            font-weight: 700;
+            text-align: right;
         }
         
         /* Contact section */
@@ -207,17 +269,17 @@
             max-width: 600px;
             margin: 0 auto;
         }
-
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
-
+        
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-
+        
         input,
         textarea {
             width: 100%;
@@ -227,12 +289,12 @@
             font-family: inherit;
             font-size: 1rem;
         }
-
+        
         textarea {
             min-height: 150px;
             resize: vertical;
         }
-
+        
         .btn {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -244,7 +306,7 @@
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
-
+        
         .btn:hover {
             background-color: var(--accent-color);
         }
@@ -260,15 +322,39 @@
         .social-links {
             margin-top: 1rem;
         }
-
+        
         .social-links a {
             color: var(--light-text);
             margin: 0 0.5rem;
             transition: color 0.3s ease;
         }
-
+        
         .social-links a:hover {
             color: var(--accent-color);
+        }
+        
+        /* Media queries */
+        @media (min-width: 768px) {
+            .about-container {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .about-content {
+                flex: 1;
+            }
+            
+            .about-image {
+                flex: 1;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -278,9 +364,15 @@
         <div class="container">
             <nav>
                 <div class="logo"><a href="#home">Your Name</a></div>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -293,6 +385,7 @@
             <div class="hero-content">
                 <h1>Content Strategist</h1>
                 <p>I help businesses create content that connects and converts.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
             </div>
         </div>
     </section>
@@ -337,6 +430,23 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-heading">What Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Working with [Your Name] transformed our content strategy and led to a 40% increase in engagement."</p>
+                    <p class="client-name">- Client Name, Company</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Our website traffic doubled within three months of implementing the content strategy."</p>
+                    <p class="client-name">- Client Name, Company</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -355,24 +465,4 @@
                     </div>
                     <div class="form-group">
                         <label for="message">How can I help you?</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Your Name | Content Strategist</p>
-            <div class="social-links">
-                <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Twitter</a>
-                <a href="#" target="_blank">Email</a>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+                        <textarea id="message" name="message" r
