@@ -4,262 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Content Strategist</title>
-html<style>/* About section enhancement */
-.section-heading {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
+    <style>
+        /* Base styles */
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #f8fafc;
+            --accent-color: #f59e0b;
+            --text-color: #1e293b;
+            --light-text: #f8fafc;
+            --spacing-unit: 1rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #ffffff;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        /* Header styles */
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* About section */
+        .about {
+            background-color: #ffffff;
+            text-align: center;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-.about-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
 
-.about-content p {
-    text-align: left;
-    margin-bottom: 1rem;
-}
+        .about-content p {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
 
-.about-image {
-    text-align: center;
-}
+        .about-image {
+            text-align: center;
+        }
 
-.about-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-/* Media query for larger screens */
-@media (min-width: 768px) {
-    .about-container {
-        flex-direction: row;
-        align-items: center;
-    }
+        /* Media query for larger screens */
+        @media (min-width: 768px) {
+            .about-container {
+                flex-direction: row;
+                align-items: center;
+            }
 
-    .about-content {
-        flex: 1;
-    }
+            .about-content {
+                flex: 1;
+            }
 
-    .about-image {
-        flex: 1;
-    }
-}
-  <style>
-    /* Base styles */
-    :root {
-        --primary-color: #0f172a;
-        --secondary-color: #f8fafc;
-        --accent-color: #f59e0b;
-        --text-color: #1e293b;
-        --light-text: #f8fafc;
-        --spacing-unit: 1rem;
-    }
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: 'Arial', sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: #ffffff;
-    }
-    
-    h1, h2, h3, h4 {
-        margin-bottom: 1rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
-    
-    p {
-        margin-bottom: 1rem;
-    }
-    
-    a {
-        color: var(--text-color);
-        text-decoration: none;
-    }
-    
-    a:hover {
-        color: var(--accent-color);
-    }
-    
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-    }
-    
-    section {
-        padding: 5rem 0;
-    }
-    
-    /* Header styles */
-    header {
-        padding: 1.5rem 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        background-color: #ffffff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .logo {
-        font-size: 1.8rem;
-        font-weight: 700;
-    }
-    
-    .nav-links {
-        display: flex;
-        list-style: none;
-    }
-    
-    .nav-links li {
-        margin-left: 2rem;
-    }
-    
-    /* Hero section */
-    .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        background-color: var(--secondary-color);
-    }
-    
-    .hero-content {
-        max-width: 600px;
-    }
-    
-    .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-    }
-    
-    /* About section */
-    .about {
-        background-color: #ffffff;
-        text-align: center;
-    }
-    
-    /* Footer */
-    footer {
-        background-color: var(--primary-color);
-        color: var(--light-text);
-        padding: 3rem 0;
-        text-align: center;
-    }
-    /* Services section */
-.services {
-    background-color: var(--secondary-color);
-}
+            .about-image {
+                flex: 1;
+            }
+        }
+        
+        /* Services section */
+        .services {
+            background-color: var(--secondary-color);
+        }
 
-.section-subheading {
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #64748b;
-}
+        .section-subheading {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #64748b;
+        }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
 
-.service-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
 
-.service-card h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
 
-/* Media query for larger screens */
-@media (min-width: 768px) {
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-    /* Contact section */
-.contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-}
+        /* Media query for larger screens */
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Contact section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
 
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
 
-input,
-textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1rem;
-}
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
 
-textarea {
-    min-height: 150px;
-    resize: vertical;
-}
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
 
-.btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
 
-.btn:hover {
-    background-color: var(--accent-color);
-}
-</style>
-</style></>
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
 <body>
-<body>
-    <!-- er -->
-    <er>
+    <!-- Header -->
+    <header>
         <div class="container">
             <nav>
                 <div class="logo"><a href="#home">Your Name</a></div>
@@ -270,32 +285,8 @@ textarea {
                 </ul>
             </nav>
         </div>
-    </er>
-<!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="container">
-        <h2 class="section-heading">Let's Work Together</h2>
-        <p class="section-subheading">Ready to transform your content strategy? Get in touch.</p>
-        
-        <div class="contact-form">
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">How can I help you?</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
@@ -305,52 +296,83 @@ textarea {
             </div>
         </div>
     </section>
-    <!-- About Section -->
-<section class="about" id="about">
-    <div class="container">
-        <h2 class="section-heading">About Me</h2>
-        <div class="about-container">
-            <div class="about-content">
-                <p>I'm a content strategist with experience helping businesses communicate more effectively. I believe that strategic content is the foundation of successful digital marketing.</p>
-                <p>My approach combines data analysis, audience research, and creative storytelling to develop content strategies that drive meaningful business results.</p>
-                <p>I've worked with clients across various industries, helping them increase engagement, generate leads, and build lasting relationships with their audience.</p>
-            </div>
-            <div class="about-image">
-                <img src="https://via.placeholder.com/400x400" alt="Your Name - Content Strategist">
-            </div>
-        </div>
-    </div>
-</section>
 
-   <!-- Services Section -->
-<section class="services" id="services">
-    <div class="container">
-        <h2 class="section-heading">How I Can Help You</h2>
-        <p class="section-subheading">Strategic content solutions tailored to your business needs</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Content Audit & Analysis</h3>
-                <p>Discover what's working, what's not, and why. I'll analyze your existing content and provide actionable insights to improve performance.</p>
-            </div>
-            <div class="service-card">
-                <h3>Content Strategy Development</h3>
-                <p>Get a comprehensive content strategy aligned with your business goals, audience needs, and current market trends.</p>
-            </div>
-            <div class="service-card">
-                <h3>Content Creation & Optimization</h3>
-                <p>From blog posts to email campaigns, I'll create compelling content that resonates with your audience and drives results.</p>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-heading">About Me</h2>
+            <div class="about-container">
+                <div class="about-content">
+                    <p>I'm a content strategist with experience helping businesses communicate more effectively. I believe that strategic content is the foundation of successful digital marketing.</p>
+                    <p>My approach combines data analysis, audience research, and creative storytelling to develop content strategies that drive meaningful business results.</p>
+                    <p>I've worked with clients across various industries, helping them increase engagement, generate leads, and build lasting relationships with their audience.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x400" alt="Your Name - Content Strategist">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-heading">How I Can Help You</h2>
+            <p class="section-subheading">Strategic content solutions tailored to your business needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Content Audit & Analysis</h3>
+                    <p>Discover what's working, what's not, and why. I'll analyze your existing content and provide actionable insights to improve performance.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Content Strategy Development</h3>
+                    <p>Get a comprehensive content strategy aligned with your business goals, audience needs, and current market trends.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Content Creation & Optimization</h3>
+                    <p>From blog posts to email campaigns, I'll create compelling content that resonates with your audience and drives results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-heading">Let's Work Together</h2>
+            <p class="section-subheading">Ready to transform your content strategy? Get in touch.</p>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can I help you?</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 Your Name | Content Strategist</p>
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Twitter</a>
+                <a href="#" target="_blank">Email</a>
+            </div>
         </div>
     </footer>
-</body>
 </body>
 </html>
