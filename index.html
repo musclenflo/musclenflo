@@ -550,6 +550,8 @@
 }
 
 .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     padding: 3rem;
     border-radius: 20px;
@@ -646,13 +648,13 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
