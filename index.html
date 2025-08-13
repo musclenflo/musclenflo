@@ -784,7 +784,7 @@
                 <div class="about-content">
                     <p>With over a decade of experience, I transform complex ideas into compelling narratives across B2B and B2C sectors.</p>
                     <p>My expertise includes content strategy and development, brand storytelling, PR & communications, and multi-genre writing.</p>
-                    <p>My approach is customer-focused, data-driven, and goal-oriented</p>
+                    <p>My approach is customer-focused, data-driven, and goal-oriented.</p>
                     <p>I've worked with clients across various industries, helping them increase engagement, generate leads, and build lasting relationships with their audience.</p>
                 </div>
                 <div class="about-image">
@@ -803,7 +803,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <h3>Content Audit & Analysis</h3>
-                    <p>Discover what's working, what's not, and why about all of the content blocks across your digital ecoystem. I'll analyze your existing content and provide actionable insights to improve performance.</p>
+                    <p>Discover what's working, what's not, and why about all of the content blocks across your digital ecosystem. I'll analyze your existing content and provide actionable insights to improve performance.</p>
                 </div>
                 <div class="service-card">
                     <h3>Content Strategy Development</h3>
@@ -957,5 +957,52 @@
         });
       });
     </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // existing mobile menu code...
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link =>
+      link.addEventListener('click', () => navLinks.classList.remove('active'))
+    );
+  }
+
+  function hookForm(formId, statusId) {
+    const form = document.getElementById(formId);
+    const statusEl = document.getElementById(statusId);
+    if (!form || !statusEl) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      statusEl.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = 'Thanks! Your submission was received.';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          statusEl.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
+            ? data.errors[0].message
+            : 'Something went wrong. Please try again.';
+        }
+      } catch {
+        statusEl.textContent = 'Network error. Please try again.';
+      }
+    });
+  }
+
+  hookForm('newsletterForm', 'newsletterStatus');
+  hookForm('contactForm', 'contactStatus');
+});
+</script>
+
 </body>
 </html>
