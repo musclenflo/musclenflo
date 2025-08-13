@@ -11,22 +11,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <style>
-    /* ===== Theme ===== */
+    /* ===== Theme: Seafoam + Coral ===== */
     :root{
-      --bg:#FAFAF8;          /* page */
-      --surface:#FFFFFF;     /* cards */
-      --ink:#111827;         /* graphite */
-      --muted:#6B7280;       /* secondary */
-      --accent:#C0841A;      /* brass/amber */
-      --accent-100:#FEF3C7;
-      --accent-700:#92400E;
-      --border:rgba(17,24,39,.12);
-      --ring:rgba(192,132,26,.22);
-      --radius:16px;
-      --scallop-base: color-mix(in srgb, var(--accent) 12%, #fff);
+      --bg:#fffaf5;            /* page background (warm parchment) */
+      --surface:#ffffff;       /* cards */
+      --ink:#0f1d2b;           /* deep blue-black */
+      --muted:#627085;         /* secondary text */
+      --accent:#ff6b6b;        /* coral */
+      --accent-100:#ffe9e9;    /* coral tint */
+      --accent2:#00c2a8;       /* seafoam */
+      --accent2-100:#e6fffa;   /* seafoam tint */
+      --border:rgba(15, 29, 43, .12);
+      --ring:rgba(255,107,107,.28);
+      --radius:18px;
     }
 
     html{scroll-behavior:smooth;}
@@ -34,13 +34,17 @@
     body{
       font-family:'Inter',sans-serif; line-height:1.6;
       color:var(--ink); background:var(--bg);
+      /* subtle dotted texture */
+      background-image: radial-gradient(rgba(15,29,43,.06) 1px, transparent 1px);
+      background-size: 18px 18px;
     }
+
     h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:700; line-height:1.2;}
-    h1{font-size:2.45rem;}
+    h1{font-size:clamp(2rem, 3.6vw, 3rem);}
     a{color:var(--ink); text-decoration:none;}
     a:hover{color:var(--accent);}
-    .container{max-width:1200px; margin:0 auto; padding:0 16px;}
-    section{padding:4.8rem 0; scroll-margin-top:92px;}
+    .container{max-width:1200px; margin:0 auto; padding:0 18px;}
+    section{padding:5rem 0; scroll-margin-top:92px;}
 
     /* ===== Header ===== */
     header{
@@ -50,6 +54,7 @@
     nav{display:flex; align-items:center; justify-content:space-between;}
     .logo a{font-weight:800; font-size:1.25rem; padding-right:1.25rem;}
     .nav-links{display:flex; list-style:none; gap:1.25rem;}
+    .nav-links a{font-weight:500;}
     .mobile-menu-toggle{display:none; flex-direction:column; width:30px; height:21px; cursor:pointer;}
     .mobile-menu-toggle span{height:3px; width:100%; background:var(--ink); border-radius:3px;}
 
@@ -65,183 +70,167 @@
     }
 
     /* ===== Utilities ===== */
-    .eyebrow{letter-spacing:.08em; text-transform:uppercase; font-weight:700; font-size:.8rem; color:var(--muted);}
-    .section-heading{
-      text-align:center; font-size:2.2rem; margin-bottom:.6rem; position:relative;
-    }
-    .section-heading::after{
-      content:""; display:block; width:84px; height:6px; margin:.7rem auto 0;
-      background:linear-gradient(90deg, color-mix(in srgb, var(--accent) 25%, #fff), var(--accent-100));
-      border-radius:999px;
-    }
+    .eyebrow{letter-spacing:.08em; text-transform:uppercase; font-weight:800; font-size:.78rem; color:var(--muted);}
+    .section-heading{text-align:center; font-size:clamp(1.6rem, 2.6vw, 2.2rem); margin-bottom:.75rem;}
     .section-subheading{text-align:center; color:var(--muted); margin-bottom:2.25rem;}
+    .underline{
+      position:relative; display:inline-block; padding-bottom:.35rem;
+    }
+    .underline::after{
+      content:""; position:absolute; left:50%; transform:translateX(-50%);
+      bottom:-6px; width:110px; height:6px; border-radius:6px;
+      background:linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
+      opacity:.9;
+    }
+    .hl{ /* text highlighter */
+      background:linear-gradient(180deg, transparent 62%, var(--accent-100) 62%);
+    }
 
-    /* Chips */
-    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.95rem 0 1.4rem;}
+    /* ===== Chips (pills) ===== */
+    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0 1.5rem;}
     .chip{
-      display:inline-flex; align-items:center; gap:.45rem;
-      padding:.48rem .72rem; border-radius:999px;
-      background: color-mix(in srgb, var(--accent) 10%, #fff);
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.5rem .8rem; border-radius:999px;
+      background:
+        linear-gradient(135deg, var(--accent-100), var(--accent2-100));
       border:1px solid var(--border);
-      color:var(--ink); font-weight:600; font-size:.92rem;
+      color:var(--ink); font-weight:700; font-size:.92rem;
     }
     .chip i{ color:var(--accent); font-size:.92rem; }
 
-    /* Buttons with subtle shine */
+    /* ===== Buttons ===== */
     .btn{
-      position:relative; overflow:hidden;
-      background:var(--accent); color:#fff; border:1px solid transparent;
-      border-radius:12px; padding:.9rem 1.2rem; font-weight:700;
-      transition:transform .02s, opacity .15s ease, box-shadow .15s ease;
-      box-shadow:0 6px 14px rgba(192,132,26,.18);
+      background:linear-gradient(135deg, var(--accent), #ff915a);
+      color:#fff; border:0; border-radius:14px;
+      padding:.9rem 1.15rem; font-weight:800;
+      box-shadow:0 8px 18px rgba(255,107,107,.25);
+      transition:transform .08s ease, box-shadow .15s ease, filter .15s ease;
     }
-    .btn::after{
-      content:""; position:absolute; inset:0; transform:translateX(-120%);
-      background:linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 45%, transparent 60%);
-      transition:transform .5s ease;
-    }
-    .btn:hover{ opacity:.95; box-shadow:0 8px 18px rgba(192,132,26,.22); }
-    .btn:hover::after{ transform:translateX(120%); }
-    .btn:active{ transform:translateY(1px); }
+    .btn:hover{ transform:translateY(-2px); filter:saturate(1.05); }
+    .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--ring); }
 
     .btn-ghost{
-      background:transparent; color:var(--ink);
-      border:1px solid var(--border); border-radius:12px;
-      padding:.9rem 1.2rem; font-weight:700;
+      background:#fff; color:var(--ink);
+      border:1px solid var(--border); border-radius:14px;
+      padding:.9rem 1.15rem; font-weight:800;
     }
-    .btn-ghost:hover{ background:var(--accent-100); }
+    .btn-ghost:hover{ background:var(--accent2-100); }
 
-    /* ===== Hero — with soft abstract shapes ===== */
-    .hero{
-      padding-top:7.6rem; padding-bottom:3.2rem; position:relative; isolation:isolate;
-      background:
-        radial-gradient(60% 80% at 18% 8%, #fff 0 40%, transparent 41%),
-        radial-gradient(40% 60% at 95% 10%, color-mix(in srgb, var(--accent) 14%, #fff) 0 40%, transparent 41%);
-    }
-    .hero::before, .hero::after{
-      content:""; position:absolute; inset:-80px -20px auto -20px; height:280px; z-index:-1;
-      filter:blur(16px); pointer-events:none;
-    }
-    .hero::before{
-      background:radial-gradient(600px 220px at 15% 15%, color-mix(in srgb, var(--accent) 22%, #fff), transparent 70%);
-      opacity:.8;
-    }
-    .hero::after{
-      right:-40px; left:auto;
-      background:radial-gradient(500px 220px at 85% 10%, color-mix(in srgb, var(--accent) 10%, #fff), transparent 70%);
-      opacity:.7;
-    }
-
-    .hero-grid{display:grid; gap:1.75rem; align-items:center;}
-    @media (min-width:900px){ .hero-grid{grid-template-columns:240px 1fr;} }
-
-    .hero-left{ display:flex; justify-content:center; align-items:center; }
-    .polaroid{
-      position:relative; display:inline-block; background:#fff;
-      padding:14px 14px 28px; border:1px solid var(--border);
-      border-radius:14px; box-shadow:0 12px 30px rgba(17,24,39,.14);
-      transform:rotate(-2.2deg);
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .polaroid::before{
-      content:""; position:absolute; top:10px; left:12px; width:46px; height:14px;
-      background:color-mix(in srgb, var(--accent) 35%, #fff);
-      opacity:.85; border-radius:2px; transform:rotate(-6deg);
-    }
-    .polaroid:hover{ transform:rotate(-1deg) translateY(-2px); box-shadow:0 16px 36px rgba(17,24,39,.18); }
-
-    .hero-photo{
-      width:190px; height:190px; object-fit:cover; border-radius:12px; display:block;
-    }
-    .hero-right h1{margin:.35rem 0 .45rem; letter-spacing:.1px;}
-    .hero-right p{color:var(--muted); max-width:58ch;}
-    .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.7rem;}
-
-    /* ===== Scalloped divider ===== */
+    /* ===== Fun separators ===== */
     .scallop{
-      height:26px; background:var(--scallop-base); position:relative;
-      mask:
-        radial-gradient(14px 14px at 13px 0, #0000 98%, #000 101%) 0 100%/28px 14px repeat-x,
-        linear-gradient(#000, #000);
-      -webkit-mask:
-        radial-gradient(14px 14px at 13px 0, #0000 98%, #000 101%) 0 100%/28px 14px repeat-x,
-        linear-gradient(#000, #000);
-    }
-
-    /* ===== Section textures (very subtle dotted grids) ===== */
-    .has-dots{ position:relative; }
-    .has-dots::before{
-      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-      background-image:
-        radial-gradient(circle at 1px 1px, rgba(17,24,39,.06) 1px, transparent 1px);
+      height:22px;
+      background:
+        radial-gradient(circle at 11px -8px, rgba(0,0,0,.12) 12px, transparent 13px) repeat-x;
       background-size:22px 22px;
       opacity:.35;
     }
 
-    /* ===== About / Services ===== */
+    /* ===== HERO ===== */
+    .hero{padding-top:7.5rem; padding-bottom:3rem; position:relative; overflow:hidden;}
+    /* soft blobs */
+    .hero::before,
+    .hero::after{
+      content:""; position:absolute; z-index:-1; filter:blur(40px); opacity:.35;
+    }
+    .hero::before{
+      width:720px; height:720px; left:-10%; top:-25%;
+      background:radial-gradient(closest-side, var(--accent2), transparent 70%);
+    }
+    .hero::after{
+      width:620px; height:620px; right:-15%; top:-10%;
+      background:radial-gradient(closest-side, var(--accent), transparent 70%);
+    }
+
+    .hero-grid{display:grid; gap:1.75rem; align-items:center;}
+    @media (min-width:900px){ .hero-grid{grid-template-columns:280px 1fr;} }
+
+    /* Polaroid */
+    .polaroid{
+      position:relative; display:inline-block; background:#fff;
+      padding:16px 16px 30px; border:1px solid var(--border);
+      border-radius:14px; box-shadow:0 20px 45px rgba(15,29,43,.16);
+      transform:rotate(-2.2deg);
+    }
+    .polaroid::before{
+      content:""; position:absolute; top:10px; left:14px; width:54px; height:16px;
+      background:linear-gradient(135deg, var(--accent2), var(--accent));
+      opacity:.85; border-radius:3px; transform:rotate(-6deg);
+      box-shadow:0 2px 6px rgba(0,0,0,.12);
+    }
+    .hero-photo{
+      width:210px; height:210px; object-fit:cover; border-radius:14px; display:block;
+    }
+    .hero-left{ display:flex; justify-content:center; align-items:center; }
+
+    .hero-right h1{margin:.5rem 0 .6rem;}
+    .hero-right p{color:var(--muted); max-width:62ch;}
+    .hero-cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem;}
+
+    /* ===== ABOUT ===== */
     .about .cards{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;
     }
-    .about .card{
+    .card{
       background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-      padding:1.1rem 1.1rem 1rem;
-      box-shadow:0 4px 10px rgba(17,24,39,.04);
+      padding:1.15rem 1.15rem 1.05rem; box-shadow:0 10px 22px rgba(15,29,43,.06);
     }
 
+    /* ===== SERVICES ===== */
     .services .grid{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:1rem; align-items:stretch;
     }
     .service{
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:var(--radius); padding:1.25rem;
-      box-shadow:0 4px 10px rgba(17,24,39,.04);
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.25rem; position:relative; overflow:hidden;
+      box-shadow:0 10px 22px rgba(15,29,43,.06);
+    }
+    .service::after{ /* tiny corner confetti */
+      content:""; position:absolute; right:-24px; top:-24px; width:90px; height:90px;
+      background:conic-gradient(from 210deg at 50% 50%, var(--accent) 0 25%, transparent 25% 50%, var(--accent2) 50% 75%, transparent 75% 100%);
+      border-radius:50%; opacity:.08;
     }
     .service h3{margin-bottom:.35rem; font-size:1.2rem;}
     .service p{color:var(--muted);}
 
-    /* ===== Testimonials ===== */
+    /* ===== TESTIMONIALS ===== */
     .testimonials .grid{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1rem;
     }
     .t-card{
-      position:relative;
-      background:var(--surface); border:1px solid var(--border);
-      border-radius:var(--radius); padding:1.25rem;
-      box-shadow:0 6px 12px rgba(17,24,39,.05);
-      overflow:hidden;
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+      padding:1.35rem; box-shadow:0 10px 22px rgba(15,29,43,.06);
     }
-    .t-card .client-name{font-weight:700; text-align:right; color:var(--muted); margin-top:.5rem;}
-    /* Watermark number for the email streamlining win */
-    .t-card[data-watermark="70"]::after{
-      content:"70%";
-      position:absolute; right:10px; bottom:-8px; z-index:0;
-      font-family:'Playfair Display', serif; font-weight:700;
-      font-size:clamp(56px, 12vw, 120px); line-height:.9;
-      color:var(--accent-100);
-      letter-spacing:-0.02em; pointer-events:none;
-    }
-    .t-card > *{ position:relative; z-index:1; }
+    .client-name{font-weight:800; text-align:left; color:var(--muted); margin-top:.9rem;}
 
-    /* ===== Contact ===== */
-    .contact .form{
-      max-width:600px; margin:0 auto; background:var(--surface);
-      border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;
-      box-shadow:0 6px 12px rgba(17,24,39,.06);
+    blockquote{position:relative; padding-left:1.4rem;}
+    blockquote::before{
+      content:"“"; position:absolute; left:0; top:-.2rem; font-family:'Playfair Display',serif;
+      font-size:2.2rem; color:var(--accent); opacity:.5; line-height:1;
     }
-    label{display:block; font-weight:600; color:var(--ink); margin-bottom:.35rem;}
+
+    /* ===== CONTACT ===== */
+    .contact .form{
+      max-width:640px; margin:0 auto; background:var(--surface);
+      border:1px solid var(--border); border-radius:var(--radius); padding:1.6rem;
+      box-shadow:0 10px 22px rgba(15,29,43,.06);
+    }
+    label{display:block; font-weight:700; color:var(--ink); margin-bottom:.35rem;}
     input, textarea{
-      width:100%; padding:.9rem 1rem; border-radius:12px; border:1px solid var(--border);
+      width:100%; padding:.95rem 1rem; border-radius:14px; border:1px solid var(--border);
       background:#fff; transition:border-color .2s ease, box-shadow .2s ease; font:inherit;
     }
     input:focus, textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--ring);}
     .hint{color:var(--muted); font-size:.9rem;}
 
-    /* Focus */
-    .btn:focus-visible, .btn-ghost:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--ring); }
+    /* ===== Footer ===== */
+    footer{background:#0b1220; color:#f8fafc; text-align:center; padding:2.2rem 0;}
+    .social-links{margin-top:.6rem;}
+    .social-links a{color:#f8fafc; margin:0 .5rem;}
+    .social-links a:hover{color:var(--accent2);}
 
     /* Small tweak */
-    @media (max-width:768px){ .hero h1{font-size:2.1rem;} }
+    @media (max-width:768px){ .hero h1{font-size:1.9rem;} }
   </style>
 </head>
 <body>
@@ -272,19 +261,24 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero has-dots" id="home">
+  <section class="hero" id="home">
     <div class="container hero-grid">
-      <!-- left column -->
+      <!-- left: polaroid intro -->
       <div class="hero-left">
         <div class="polaroid" aria-hidden="true">
-          <img src="https://i.imgur.com/nQFkVBU.jpeg" alt="Paige Lockhart" class="hero-photo" width="190" height="190" decoding="async" fetchpriority="high"/>
+          <img
+            src="https://i.imgur.com/nQFkVBU.jpeg"
+            alt="Paige Lockhart"
+            class="hero-photo"
+            width="210" height="210"
+            decoding="async" fetchpriority="high">
         </div>
       </div>
 
-      <!-- right column -->
+      <!-- right: value prop -->
       <div class="hero-right">
         <div class="eyebrow">Content Strategy, End-to-End</div>
-        <h1>I help teams turn ideas into high-value content—fast.</h1>
+        <h1>I help teams turn ideas into <span class="hl">high-value content</span>—fast.</h1>
         <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
 
         <div class="chips">
@@ -295,7 +289,7 @@
 
         <div class="hero-cta">
           <a href="#contact" class="btn">Start a project</a>
-          <a href="#services" class="btn btn-ghost">See how I help</a>
+          <a href="#services" class="btn-ghost">See how I help</a>
         </div>
       </div>
     </div>
@@ -304,9 +298,9 @@
   <div class="scallop" aria-hidden="true"></div>
 
   <!-- ABOUT -->
-  <section class="about has-dots" id="about">
+  <section class="about" id="about">
     <div class="container">
-      <h2 class="section-heading">About Me</h2>
+      <h2 class="section-heading underline">About Me</h2>
       <p class="section-subheading">Creative writing roots. Strategy brain. Results obsessed.</p>
 
       <div class="cards">
@@ -315,9 +309,9 @@
         </div>
         <div class="card">
           <strong>What clients get:</strong>
-          <ul style="margin:.5rem 0 0 1.1rem; color:var(--muted);">
+          <ul style="margin:.6rem 0 0 1.1rem; color:var(--muted);">
             <li>Clear priorities and a plan you’ll actually use</li>
-            <li>Messaging that sharpens what you sell &amp; why it matters</li>
+            <li>Messaging that sharpens what you sell & why it matters</li>
             <li>Strategic frameworks, briefs, and content calendars</li>
             <li>Signals over noise (trends + platform insights)</li>
           </ul>
@@ -329,18 +323,18 @@
   <div class="scallop" aria-hidden="true"></div>
 
   <!-- SERVICES -->
-  <section class="services has-dots" id="services">
+  <section class="services" id="services">
     <div class="container">
-      <h2 class="section-heading">How I Can Help</h2>
+      <h2 class="section-heading underline">How I Can Help</h2>
       <p class="section-subheading">From “we’re not sure where to start” to “this is working.”</p>
 
       <div class="grid">
         <div class="service">
-          <h3>Content Audit &amp; Direction</h3>
+          <h3>Content Audit & Direction</h3>
           <p>What to keep, kill, and fix—plus a priority roadmap aligned to business goals.</p>
         </div>
         <div class="service">
-          <h3>Messaging &amp; Strategy</h3>
+          <h3>Messaging & Strategy</h3>
           <p>Positioning, narrative, and a practical plan across web, email, social, and video.</p>
         </div>
         <div class="service">
@@ -348,7 +342,7 @@
           <p>Copy, scripts, briefs, outlines, and finished assets—done with you or for you.</p>
         </div>
         <div class="service">
-          <h3>Distribution &amp; Optimization</h3>
+          <h3>Distribution & Optimization</h3>
           <p>Repurposing, channel fit, and iteration based on what actually performs.</p>
         </div>
       </div>
@@ -358,23 +352,29 @@
   <div class="scallop" aria-hidden="true"></div>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials has-dots" id="testimonials">
+  <section class="testimonials" id="testimonials">
     <div class="container">
-      <h2 class="section-heading">What Clients Say</h2>
+      <h2 class="section-heading underline">What Clients Say</h2>
 
       <div class="grid">
         <div class="t-card">
-          <p>“If you need it done, she will figure out a way. She's a skilled strategist who can quickly zero in on pain points and deliver actionable solutions. She not only does the work, she sets you up so you learn how to manage once her work is done.”</p>
+          <blockquote>
+            If you need it done, she will figure out a way. She's a skilled strategist who can quickly zero in on pain points and deliver actionable solutions. She not only does the work, she sets you up so you learn how to manage once her work is done.
+          </blockquote>
           <p class="client-name">— Stefanie W., Government Agency</p>
         </div>
 
-        <div class="t-card" data-watermark="70">
-          <p>“Paige reduced our team's lengthy and complex content creation time by 70%, taking us from 150 email journeys and 500 different templates to less than 25 journeys and 20 templates that deliver the same value to our prospects and students.”</p>
+        <div class="t-card">
+          <blockquote>
+            Paige reduced our team's lengthy and complex content creation time by 70%, taking us from 150 email journeys and 500 different templates to less than 25 journeys and 20 templates that deliver the same value to our prospects and students.
+          </blockquote>
           <p class="client-name">— Rebecca H., Education Services</p>
         </div>
 
         <div class="t-card">
-          <p>“She took the time to understand who we are and what makes our brand unique, then delivered fresh insights, trend breakdowns, and data-backed strategies tailored to our goals. Her guidance gave us clarity and confidence, and now we’re seeing real momentum in both growth and content quality.”</p>
+          <blockquote>
+            She took the time to understand who we are and what makes our brand unique, then delivered fresh insights, trend breakdowns, and data-backed strategies tailored to our goals. Her guidance gave us clarity and confidence, and now we’re seeing real momentum in both growth and content quality.
+          </blockquote>
           <p class="client-name">— Lyndon Wade, Founder, Tiki Taco</p>
         </div>
       </div>
@@ -384,9 +384,9 @@
   <div class="scallop" aria-hidden="true"></div>
 
   <!-- CONTACT -->
-  <section class="contact has-dots" id="contact">
+  <section class="contact" id="contact">
     <div class="container">
-      <h2 class="section-heading">Let's Work Together</h2>
+      <h2 class="section-heading underline">Let's Work Together</h2>
       <p class="section-subheading">Tell me where you are and what you’re aiming for. I’ll respond with next steps.</p>
 
       <div class="form">
@@ -417,12 +417,12 @@
   </section>
 
   <!-- Footer -->
-  <footer style="background:#0b1220; color:#f8fafc; text-align:center; padding:2.2rem 0;">
+  <footer>
     <div class="container">
       <p>&copy; 2025 Paige Lockhart | Content Strategist</p>
-      <div class="social-links" style="margin-top:.6rem;">
-        <a href="https://www.linkedin.com/in/lockhartpaige" target="_blank" rel="noopener" style="color:#f8fafc; margin:0 .5rem;">LinkedIn</a>
-        <a href="mailto:paige.lockhart@gmail.com" target="_blank" rel="noopener" style="color:#f8fafc; margin:0 .5rem;">Email</a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/lockhartpaige" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:paige.lockhart@gmail.com" target="_blank" rel="noopener">Email</a>
       </div>
     </div>
   </footer>
@@ -433,21 +433,24 @@
       // Mobile menu
       const menuToggle = document.querySelector('.mobile-menu-toggle');
       const navLinks = document.querySelector('.nav-links');
-
       if (menuToggle && navLinks) {
         menuToggle.setAttribute('aria-expanded', 'false');
+
         const toggle = () => {
           navLinks.classList.toggle('active');
-          menuToggle.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
+          const expanded = navLinks.classList.contains('active');
+          menuToggle.setAttribute('aria-expanded', String(expanded));
         };
+
         menuToggle.addEventListener('click', toggle);
         menuToggle.addEventListener('keypress', (e) => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
         });
+
         document.querySelectorAll('.nav-links a').forEach(link =>
           link.addEventListener('click', () => {
             navLinks.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded','false');
+            menuToggle.setAttribute('aria-expanded', 'false');
           })
         );
       }
