@@ -849,15 +849,17 @@
   <div class="form-group">
     <input type="email" name="email" placeholder="Enter your email address" required>
   </div>
+
   <div class="form-group">
     <input type="text" name="first_name" placeholder="Your first name">
   </div>
+
   <!-- Optional honeypot to block bots -->
   <input type="text" name="_gotcha" style="display:none">
-  
+
   <button type="submit" class="btn newsletter-btn">Send me The Trend Brief</button>
-  
-  <!-- This text will be updated via JS -->
+
+  <!-- Inline status message (updated via JS helper) -->
   <p class="newsletter-disclaimer" id="newsletterStatus">
     No spam. Unsubscribe anytime. <a href="#privacy">Privacy policy</a>.
   </p>
@@ -898,23 +900,30 @@
     <p class="section-subheading">Ready to transform your content strategy? Get in touch.</p>
     
     <div class="contact-form">
-      <form id="contactForm" action="https://formspree.io/f/xrbljoja" method="POST">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Request</label>
-          <textarea id="message" name="message" rows="5"></textarea>
-        </div>
-        <button type="submit" class="btn">Send Message</button>
-        <!-- Optional: status message -->
-        <p id="contactStatus" style="text-align:center; margin-top:1rem; color:#fff;"></p>
-      </form>
+<form id="contactForm" action="https://formspree.io/f/xrbljoja" method="POST">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Request</label>
+    <textarea id="message" name="message" rows="5"></textarea>
+  </div>
+
+  <!-- Optional: simple honeypot to reduce spam -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <button type="submit" class="btn">Send Message</button>
+
+  <!-- Inline status message (used by the JS helper) -->
+  <p id="contactStatus" style="text-align:center; margin-top:1rem; color:#fff;"></p>
+</form>
     </div>
   </div>
 </section>
