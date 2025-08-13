@@ -15,18 +15,19 @@
 
   <style>
     /* ===== Theme: Seafoam + Coral ===== */
-    :root{
-      --bg:#fffaf5;            /* page background (warm parchment) */
-      --surface:#ffffff;       /* cards */
-      --ink:#0f1d2b;           /* deep blue-black */
-      --muted:#627085;         /* secondary text */
-      --accent:#ff6b6b;        /* coral */
-      --accent-100:#ffe9e9;    /* coral tint */
-      --accent2:#00c2a8;       /* seafoam */
-      --accent2-100:#e6fffa;   /* seafoam tint */
-      --border:rgba(15, 29, 43, .12);
-      --ring:rgba(255,107,107,.28);
-      --radius:18px;
+   :root{
+  --bg:#FBFEFD;          /* page */
+  --surface:#FFFFFF;     /* cards */
+  --ink:#0B1220;         /* deep navy text */
+  --muted:#616A78;       /* secondary */
+  --accent:#FF6A3D;      /* tangerine pop */
+  --accent-100:#FFE6DB;  /* soft wash */
+  --accent-200:#FFCDBF;
+  --accent-700:#B34823;
+  --teal:#12B5A6;        /* secondary accent */
+  --border:rgba(11,18,32,.12);
+  --ring:rgba(255,106,61,.24);
+  --radius:16px;
     }
 
     html{scroll-behavior:smooth;}
@@ -88,33 +89,38 @@
 
     /* ===== Chips (pills) ===== */
     .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0 1.5rem;}
-    .chip{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.5rem .8rem; border-radius:999px;
-      background:
-        linear-gradient(135deg, var(--accent-100), var(--accent2-100));
-      border:1px solid var(--border);
-      color:var(--ink); font-weight:700; font-size:.92rem;
-    }
-    .chip i{ color:var(--accent); font-size:.92rem; }
+   .chip{
+  display:inline-flex; align-items:center; gap:.45rem;
+  padding:.45rem .7rem; border-radius:999px;
+  background: color-mix(in srgb, var(--teal) 12%, #fff);
+  border: 1px solid transparent;
+  color: var(--ink); font-weight:600; font-size:.92rem;
+}
+.chip i{ color: var(--teal); font-size:.92rem; }
 
     /* ===== Buttons ===== */
-    .btn{
-      background:linear-gradient(135deg, var(--accent), #ff915a);
-      color:#fff; border:0; border-radius:14px;
-      padding:.9rem 1.15rem; font-weight:800;
-      box-shadow:0 8px 18px rgba(255,107,107,.25);
-      transition:transform .08s ease, box-shadow .15s ease, filter .15s ease;
-    }
-    .btn:hover{ transform:translateY(-2px); filter:saturate(1.05); }
-    .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--ring); }
+.btn{
+  background: var(--accent);
+  color:#fff;
+  border:1px solid transparent;
+  border-radius:12px;
+  padding:.9rem 1.2rem;
+  font-weight:700;
+  transition: transform .06s ease, box-shadow .2s ease, opacity .15s ease;
+  box-shadow: 0 6px 18px rgba(255,106,61,.28);
+}
+.btn:hover{ transform: translateY(-1px); opacity:1; box-shadow:0 10px 24px rgba(255,106,61,.34); }
 
-    .btn-ghost{
-      background:#fff; color:var(--ink);
-      border:1px solid var(--border); border-radius:14px;
-      padding:.9rem 1.15rem; font-weight:800;
-    }
-    .btn-ghost:hover{ background:var(--accent2-100); }
+.btn-ghost{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:.9rem 1.2rem;
+  font-weight:700;
+}
+.btn-ghost:hover{ background: color-mix(in srgb, var(--teal) 10%, #fff); border-color: color-mix(in srgb, var(--teal) 30%, #e5e7eb); }
+
 
     /* ===== Fun separators ===== */
     .scallop{
@@ -231,9 +237,43 @@
 
     /* Small tweak */
     @media (max-width:768px){ .hero h1{font-size:1.9rem;} }
+    /* Remove decorative corner shapes on cards (if present) */
+.service, .t-card, .about .card { background-image:none !important; }
+.service::before, .service::after,
+.t-card::before, .t-card::after,
+.about .card::before, .about .card::after { content:none !important; }
+
+/* Remove any hero gradient haze */
+.hero { background: transparent !important; }
+.hero::before, .hero::after { content:none !important; }
+
+/* If you still see the faint “70%” on the middle testimonial, nuke it: */
+.t-card:nth-child(2)::after { content:none !important; }
+    /* Multicolor underline you can apply to words */
+.swash{
+  background:
+    linear-gradient(90deg, var(--accent) 0 62%, var(--teal) 62% 100%)
+    0 95% / 100% .22em no-repeat;
+}
+    .section-heading{
+  position:relative;
+}
+.section-heading::after{
+  content:"";
+  display:block;
+  width:140px; height:6px; border-radius:6px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+  margin-top:.45rem;
+}
+    body{
+  background:
+    radial-gradient(color-mix(in srgb, var(--ink) 7%, #fff) 1px, transparent 1px) 0 0 / 18px 18px,
+    var(--bg);
+}
   </style>
 </head>
 <body>
+  
 
   <!-- Header -->
   <header>
@@ -278,7 +318,7 @@
       <!-- right: value prop -->
       <div class="hero-right">
         <div class="eyebrow">Content Strategy, End-to-End</div>
-        <h1>I help teams turn ideas into <span class="hl">high-value content</span>—fast.</h1>
+        <h1>I help teams turn ideas into <span class="swash">high-value content</span>—fast.</h1>
         <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
 
         <div class="chips">
