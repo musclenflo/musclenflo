@@ -15,14 +15,21 @@
 
   <style>
     /* ===== Base / Theme ===== */
-:root{
-  --bg:#fdf7ff;
-  --surface:#ffffff;
-  --ink:#201038;
-  --muted:#6e6380;
-  --accent:#8b5cf6;    /* soft violet */
-  --accent-ink:#160a2b;
-}
+    :root{
+      /* Plum–cream palette */
+      --bg:#fdf7ff;            /* page background (soft cream) */
+      --surface:#ffffff;       /* card/background surface */
+      --ink:#201038;           /* primary text (plum-ink) */
+      --muted:#6e6380;         /* secondary text */
+      --accent:#8b5cf6;        /* violet-plum */
+      --accent-100:#ede9fe;
+      --accent-200:#ddd6fe;
+      --accent-700:#6d28d9;
+      --border:rgba(32,16,56,.12);
+      --ring:rgba(139,92,246,.22);
+      --radius:16px;
+    }
+
     html{scroll-behavior:smooth;}
     *{margin:0;padding:0;box-sizing:border-box;}
     body{
@@ -58,19 +65,45 @@
       .nav-links.active{transform:translateY(0);}
     }
 
-    /* ===== Utility bits ===== */
-    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.75rem 0 1.25rem;}
-    .chip{
-      display:inline-flex; align-items:center; gap:.4rem;
-      padding:.4rem .7rem; border-radius:999px;
-      background:#fff3e0; border:1px solid rgba(15,23,42,.08); font-weight:600; font-size:.9rem;
-    }
-    .chip i{color:var(--accent);}
+    /* ===== Utilities ===== */
     .eyebrow{letter-spacing:.08em; text-transform:uppercase; font-weight:700; font-size:.8rem; color:var(--muted);}
     .section-heading{text-align:center; font-size:2.1rem; margin-bottom:.5rem;}
     .section-subheading{text-align:center; color:var(--muted); margin-bottom:2.25rem;}
 
-    /* ===== Pattern bar (subtle checker) ===== */
+    /* Chips (pill tags) */
+    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.75rem 0 1.25rem;}
+    .chip{
+      display:inline-flex; align-items:center; gap:.45rem;
+      padding:.45rem .7rem; border-radius:999px;
+      background:var(--accent-100);
+      border:1px solid var(--border);
+      color:var(--ink); font-weight:600; font-size:.92rem;
+    }
+    .chip i{ color:var(--accent); font-size:.92rem; }
+
+    /* Buttons */
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:1px solid transparent;
+      border-radius:12px;
+      padding:.9rem 1.2rem;
+      font-weight:700;
+      transition:opacity .15s ease;
+    }
+    .btn:hover{ opacity:.9; }
+
+    .btn-ghost{
+      background:transparent;
+      color:var(--ink);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:.9rem 1.2rem;
+      font-weight:700;
+    }
+    .btn-ghost:hover{ background:var(--accent-100); }
+
+    /* Pattern bar (subtle checker) */
     .pattern-bar{
       height:14px;
       background-image:
@@ -78,56 +111,41 @@
         linear-gradient(45deg, rgba(0,0,0,.12) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.12) 75%);
       background-size:18px 18px;
       background-position:0 0, 9px 9px;
-      opacity:.75;
+      opacity:.65;
+      border-top:6px solid color-mix(in srgb, var(--accent) 18%, #fff);
     }
-
-/* Buttons */
-.btn{
-  background:var(--accent-color);
-  color:#fff;
-  border:1px solid transparent;
-  border-radius:12px;
-  padding:.9rem 1.2rem;
-  font-weight:700;
-  transition:transform .02s, opacity .15s;
-}
-.btn:hover{ background:var(--accent-700); opacity:1; }
-
-.btn-ghost{
-  background:transparent;
-  color:var(--ink);
-  border:1px solid var(--border);
-}
-.btn-ghost:hover{ background:var(--accent-100); }
-
-/* Links */
-a{ color:var(--ink); }
-a:hover{ color:var(--accent-color); }
-
 
     /* ===== HERO ===== */
     .hero{padding-top:7.5rem; padding-bottom:2.5rem;}
     .hero-grid{display:grid; gap:1.75rem; align-items:center;}
+    @media (min-width:900px){ .hero-grid{grid-template-columns:240px 1fr;} }
+
+    .polaroid{
+      position:relative; display:inline-block; background:#fff;
+      padding:14px 14px 28px; border:1px solid var(--border);
+      border-radius:14px; box-shadow:0 12px 30px rgba(17,24,39,.14);
+      transform:rotate(-2.2deg);
+    }
+    .polaroid::before{
+      content:""; position:absolute; top:10px; left:12px; width:46px; height:14px;
+      background:color-mix(in srgb, var(--accent) 35%, #fff);
+      opacity:.85; border-radius:2px; transform:rotate(-6deg);
+    }
     .hero-photo{
-      width:160px; height:160px; border-radius:22px; object-fit:cover; border:6px solid var(--surface);
-      box-shadow:0 8px 24px rgba(17,24,39,.12);
+      width:190px; height:190px; object-fit:cover;
+      border-radius:12px; display:block;
     }
-    .hero-left{display:flex; align-items:center; gap:1.25rem;}
-    .hero h1{margin:.4rem 0 .4rem;}
-    .hero p{color:var(--muted); max-width:58ch;}
+
+    .hero-right h1{margin:.4rem 0 .4rem;}
+    .hero-right p{color:var(--muted); max-width:58ch;}
     .hero-cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.6rem;}
-    @media (min-width:900px){
-      .hero-grid{grid-template-columns:1.1fr .9fr;}
-      .hero-left{gap:1.5rem;}
-      .hero-photo{width:190px; height:190px;}
-    }
 
     /* ===== ABOUT ===== */
     .about .cards{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;
     }
     .about .card{
-      background:var(--surface); border:1px solid rgba(15,23,42,.08); border-radius:var(--radius);
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.1rem 1.1rem 1rem;
     }
 
@@ -137,7 +155,7 @@ a:hover{ color:var(--accent-color); }
       gap:1rem; align-items:stretch;
     }
     .service{
-      background:var(--surface); border:1px solid rgba(15,23,42,.08); border-radius:var(--radius); padding:1.25rem;
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;
     }
     .service h3{margin-bottom:.35rem; font-size:1.2rem;}
     .service p{color:var(--muted);}
@@ -147,7 +165,7 @@ a:hover{ color:var(--accent-color); }
       display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1rem;
     }
     .t-card{
-      background:var(--surface); border:1px solid rgba(15,23,42,.08); border-radius:var(--radius);
+      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.25rem;
     }
     .client-name{font-weight:700; text-align:right; color:var(--muted); margin-top:.5rem;}
@@ -155,62 +173,21 @@ a:hover{ color:var(--accent-color); }
     /* ===== CONTACT ===== */
     .contact .form{
       max-width:600px; margin:0 auto; background:var(--surface);
-      border:1px solid rgba(15,23,42,.08); border-radius:var(--radius); padding:1.5rem;
+      border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;
     }
     label{display:block; font-weight:600; color:var(--ink); margin-bottom:.35rem;}
     input, textarea{
-      width:100%; padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(15,23,42,.12);
+      width:100%; padding:.9rem 1rem; border-radius:12px; border:1px solid var(--border);
       background:#fff; transition:border-color .2s ease, box-shadow .2s ease; font:inherit;
     }
-    input:focus, textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(245,158,11,.18);}
+    input:focus, textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--ring);}
     .hint{color:var(--muted); font-size:.9rem;}
 
-    /* ===== Footer ===== */
-    footer{background:#0b1220; color:#f8fafc; text-align:center; padding:2.2rem 0;}
-    .social-links{margin-top:.6rem;}
-    .social-links a{color:#f8fafc; margin:0 .5rem;}
-    .social-links a:hover{color:var(--accent);}
+    /* Small tweak */
+    @media (max-width:768px){ .hero h1{font-size:2.1rem;} }
   </style>
 </head>
 <body>
-
-  .polaroid{
-  position:relative; display:inline-block; background:#fff;
-  padding:14px 14px 28px; border:1px solid rgba(15,23,42,.10);
-  border-radius:14px; box-shadow:0 12px 30px rgba(17,24,39,.14);
-  transform:rotate(-2.2deg);
-}
-.polaroid::before{
-  content:""; position:absolute; top:10px; left:12px; width:46px; height:14px;
-  background:color-mix(in srgb, var(--accent) 35%, #fff);
-  opacity:.85; border-radius:2px; transform:rotate(-6deg);
-}
-.polaroid .hero-photo{ border:none; box-shadow:none; }
-
-  .chip{
-  display:inline-flex; align-items:center; gap:.45rem;
-  padding:.45rem .7rem; border-radius:999px;
-  background:var(--accent-100);
-  border:1px solid var(--border);
-  color:var(--ink); font-weight:600; font-size:.92rem;
-}
-
-  .newsletter-form input,
-.contact input, .contact textarea{
-  border:1px solid var(--border);
-}
-.newsletter-form input:focus,
-.contact input:focus, .contact textarea:focus{
-  border-color:var(--accent-color);
-  box-shadow:0 0 0 3px var(--ring);
-  outline:none;
-}
-
-  .polaroid{ border:1px solid var(--border); }
-.polaroid::before{ background:color-mix(in srgb, var(--accent-color) 35%, #fff); }
-
-  .pattern-bar{ border-top:6px solid color-mix(in srgb, var(--accent-color) 18%, #fff);
-              opacity:.6; }
 
   <!-- Header -->
   <header>
@@ -233,21 +210,28 @@ a:hover{ color:var(--accent-color); }
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="container hero-grid">
-     <div class="polaroid">
-  <img src="https://i.imgur.com/nQFkVBU.jpeg" alt="Paige Lockhart" class="hero-photo"/>
-</div>
+      <!-- left column -->
+      <div class="hero-left">
+        <div class="polaroid">
+          <img src="https://i.imgur.com/nQFkVBU.jpeg" alt="Paige Lockhart" class="hero-photo"/>
+        </div>
+      </div>
 
-          <div class="eyebrow">Content Strategy, End-to-End</div>
-          <h1>I help teams turn ideas into high-value content—fast.</h1>
-          <div class="chips">
-            <span class="chip"><i class="fa-solid fa-gauge-high"></i> ROI-focused</span>
-            <span class="chip"><i class="fa-regular fa-lightbulb"></i> Clear next steps</span>
-            <span class="chip"><i class="fa-solid fa-rocket"></i> No fluff</span>
-          </div>
-          <div class="hero-cta">
-            <a href="#contact" class="btn">Start a project</a>
-            <a href="#services" class="btn btn-ghost">See how I help</a>
-          </div>
+      <!-- right column -->
+      <div class="hero-right">
+        <div class="eyebrow">Content Strategy, End-to-End</div>
+        <h1>I help teams turn ideas into high-value content—fast.</h1>
+        <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
+
+        <div class="chips">
+          <span class="chip"><i class="fa-solid fa-gauge-high"></i> ROI-focused</span>
+          <span class="chip"><i class="fa-regular fa-lightbulb"></i> Clear next steps</span>
+          <span class="chip"><i class="fa-solid fa-rocket"></i> No fluff</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Start a project</a>
+          <a href="#services" class="btn btn-ghost">See how I help</a>
         </div>
       </div>
     </div>
@@ -297,7 +281,7 @@ a:hover{ color:var(--accent-color); }
         </div>
         <div class="service">
           <h3>Hands-On Creation</h3>
-          <p>Copy, scripts, briefs, outlines, and actionable plans done with you or for you.</p>
+          <p>Copy, scripts, briefs, outlines, and finished assets—done with you or for you.</p>
         </div>
         <div class="service">
           <h3>Distribution & Optimization</h3>
@@ -395,10 +379,9 @@ a:hover{ color:var(--accent-color); }
       }
 
       // Formspree helper
-      function hookForm(formId, statusId) {
-        const form = document.getElementById(formId);
-        const statusEl = document.getElementById(statusId);
-        if (!form || !statusEl) return;
+      const form = document.getElementById('contactForm');
+      const statusEl = document.getElementById('contactStatus');
+      if (form && statusEl) {
         form.addEventListener('submit', async function (e) {
           e.preventDefault();
           statusEl.textContent = 'Sending…';
@@ -422,8 +405,6 @@ a:hover{ color:var(--accent-color); }
           }
         });
       }
-
-      hookForm('contactForm', 'contactStatus');
     });
   </script>
 </body>
