@@ -78,7 +78,8 @@
   border:1px solid var(--border);
   color:var(--ink); font-weight:600; font-size:.92rem;
 }
-.chip i{ color:var(--accent); font-size:.92rem; }
+.chip{ background: color-mix(in srgb, var(--accent) 10%, #fff); }
+
 
 
     /* Buttons */
@@ -135,6 +136,7 @@
       width:190px; height:190px; object-fit:cover;
       border-radius:12px; display:block;
     }
+    .hero-left{ display:flex; justify-content:center; align-items:center; }
 
     .hero-right h1{margin:.4rem 0 .4rem;}
     .hero-right p{color:var(--muted); max-width:58ch;}
@@ -185,27 +187,39 @@
 
     /* Small tweak */
     @media (max-width:768px){ .hero h1{font-size:2.1rem;} }
+    .btn:focus-visible,
+.btn-ghost:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
   </style>
 </head>
 <body>
 
   <!-- Header -->
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo"><a href="#home">Paige Lockhart</a></div>
-        <div class="mobile-menu-toggle" aria-label="Toggle navigation" role="button" tabindex="0">
-          <span></span><span></span><span></span>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo"><a href="#home">Paige Lockhart</a></div>
+
+      <div class="mobile-menu-toggle"
+           aria-label="Toggle navigation"
+           role="button"
+           tabindex="0"
+           aria-controls="primary-nav"
+           aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -213,7 +227,11 @@
       <!-- left column -->
       <div class="hero-left">
         <div class="polaroid">
-          <img src="https://i.imgur.com/nQFkVBU.jpeg" alt="Paige Lockhart" class="hero-photo"/>
+         <img src="https://i.imgur.com/nQFkVBU.jpeg"
+     alt="Paige Lockhart"
+     class="hero-photo"
+     width="190" height="190"
+     decoding="async" fetchpriority="high">
         </div>
       </div>
 
@@ -364,18 +382,40 @@
   </footer>
 
   <!-- Scripts -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // Mobile menu
-      const menuToggle = document.querySelector('.mobile-menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      if (menuToggle && navLinks) {
-        const toggle = () => navLinks.classList.toggle('active');
-        menuToggle.addEventListener('click', toggle);
-        menuToggle.addEventListener('keypress', (e)=>{ if(e.key==='Enter') toggle(); });
-        document.querySelectorAll('.nav-links a').forEach(link =>
-          link.addEventListener('click', () => navLinks.classList.remove('active'))
-        );
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Mobile menu
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuToggle && navLinks) {
+    // announce initial state
+    menuToggle.setAttribute('aria-expanded', 'false');
+
+    const toggle = () => {
+      navLinks.classList.toggle('active');
+      const expanded = navLinks.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', String(expanded));
+    };
+
+    menuToggle.addEventListener('click', toggle);
+    menuToggle.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+
+    // Close on link click and reset aria state
+    document.querySelectorAll('.nav-links a').forEach(link =>
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+  }
+
+  // (keep your Formspree helper below this)
+});
+</script>
+
       }
 
       // Formspree helper
