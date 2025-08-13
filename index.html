@@ -118,6 +118,10 @@
     border-color: color-mix(in srgb, var(--forest) 35%, #e5e7eb);
   }
   .btn-ghost:hover{ background: color-mix(in srgb, var(--forest) 10%, #fff); }
+    .btn:focus-visible, .btn-ghost:focus-visible, a:focus-visible{
+  outline:none; box-shadow:0 0 0 3px var(--ring);
+}
+
 
   /* Pattern bands */
 .band-checker {
@@ -131,15 +135,15 @@
   height: 24px;
   opacity: 0.85;
 }
-  .wave{
-    position:relative; height:20px; background:var(--cream);
-  }
-  .wave::before{
-    content:""; position:absolute; inset:-18px 0 auto 0; height:36px;
-    background:
-      radial-gradient(18px 18px at 18px 18px,#0000 98%,var(--bg)) 0 0/36px 36px,
-      linear-gradient(var(--bg),var(--bg)) top/100% 50% no-repeat;
-  }
+.wave{
+  position:relative; height:18px; background:#F6FAF8; /* matches checker bg */
+}
+.wave::before{
+  content:""; position:absolute; inset:-14px 0 auto 0; height:28px;
+  background:
+    radial-gradient(14px 14px at 14px 14px,#0000 98%, var(--bg)) 0 0/28px 28px,
+    linear-gradient(var(--bg), var(--bg)) top/100% 50% no-repeat;
+}
 
   /* ===== HERO ===== */
   .hero{padding-top:7.5rem; padding-bottom:3rem; position:relative; overflow:hidden;}
@@ -245,11 +249,11 @@
   }
 
   /* Optional dotted texture only for one section */
-  .section-textured{
-    background:
-      radial-gradient(color-mix(in srgb, var(--forest) 10%, #fff) 1px, transparent 1px) 0 0/18px 18px,
-      var(--cream);
-  }
+.section-textured{
+  background:
+    radial-gradient(color-mix(in srgb, var(--forest) 10%, #fff) 1px, transparent 1px) 0 0/18px 18px,
+    #F6FAF8; /* same airy sage as checkers/wave */
+}
 
   /* ===== CONTACT ===== */
   .contact .form{
@@ -270,6 +274,11 @@
   .social-links{margin-top:.6rem;}
   .social-links a{color:#f8fafc; margin:0 .5rem;}
   .social-links a:hover{color:var(--accent2);}
+
+    @media (max-width:540px){
+  .band-checker{ height:20px; background-size:18px 18px; opacity:.8; }
+}
+    
   </style>
 </head>
 <body>
@@ -316,7 +325,7 @@
 
       <!-- right: value prop -->
       <div class="hero-right">
-        <span class="badge">availability: open Q4</span>
+        <span class="badge">Availability: Open to new clients</span>
         <div class="eyebrow">Content Strategy, End-to-End</div>
         <h1>I help teams turn ideas into <span class="starburst swash">high-value content</span>—fast.</h1>
         <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
