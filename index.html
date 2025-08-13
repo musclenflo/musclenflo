@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico">
+<meta property="og:title" content="Paige Lockhart | Content Strategist">
+<meta property="og:description" content="I help teams turn ideas into high-value content—fast.">
+<meta property="og:image" content="https://www.paige-lockhart.com/og-cover.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Paige Lockhart | Content Strategist</title>
+  
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -26,7 +34,7 @@
     --accent-700:#9C3C26;
     --teal:#2D8F7F;        /* sage-leaning teal */
     --forest:#1F5C4D;      /* deep sage */
-    --cream:#FFF3E0;       /* alt band bg */
+    --sage:#F6FAF8;       /* alt band bg */
     --border:rgba(0,0,0,.12);
     --ring:rgba(226,93,61,.25);
     --radius:16px;
@@ -49,10 +57,16 @@
   section{padding:5rem 0; scroll-margin-top:92px;}
 
   /* ===== Header ===== */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:1000;
-    background:#fff; box-shadow:0 1px 0 rgba(15,23,42,.06); padding:1rem 0;
-  }
+header {
+  transition: box-shadow .2s ease, background .2s ease;
+}
+.is-scrolled header {
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  background: #fff;
+}const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll);
+
   nav{display:flex; align-items:center; justify-content:space-between;}
   .logo a{font-weight:800; font-size:1.25rem; padding-right:1.25rem;}
   .nav-links{display:flex; list-style:none; gap:1.25rem;}
@@ -118,8 +132,10 @@
     border-color: color-mix(in srgb, var(--forest) 35%, #e5e7eb);
   }
   .btn-ghost:hover{ background: color-mix(in srgb, var(--forest) 10%, #fff); }
-    .btn:focus-visible, .btn-ghost:focus-visible, a:focus-visible{
-  outline:none; box-shadow:0 0 0 3px var(--ring);
+    .btn:focus-visible, .btn-ghost:focus-visible, a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+      
 }
 
 
@@ -275,10 +291,13 @@
   .social-links a{color:#f8fafc; margin:0 .5rem;}
   .social-links a:hover{color:var(--accent2);}
 
-    @media (max-width:540px){
-  .band-checker{ height:20px; background-size:18px 18px; opacity:.8; }
+@media(max-width:540px) {
+  .band-checker {
+    height: 20px;
+    background-size: 16px 16px;
+    opacity: 0.8;
+  }
 }
-    
   </style>
 </head>
 <body>
