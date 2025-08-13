@@ -12,6 +12,68 @@
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+/* --- POLISH PACK --- */
+
+/* Offset for fixed header so the hero isn’t cramped */
+body { padding-top: 76px; }
+
+/* Slightly bigger hero typography + tighter width */
+.hero h1 { font-size: clamp(2.2rem, 3vw + 1rem, 3.2rem); letter-spacing: -0.5px; }
+.hero p { max-width: 48ch; }
+
+/* Add a tidy hairline divider component */
+.divider {
+  height: 1px; width: 100%;
+  background: linear-gradient(to right, transparent, rgba(15,23,42,.08), transparent);
+  margin: 2rem 0;
+}
+
+/* Section eyebrow (tiny label above headings) */
+.eyebrow {
+  display:inline-block; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase;
+  color: var(--muted); margin-bottom:.5rem;
+}
+
+/* Card hover = life without cheese */
+.card {
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(15,23,42,.06);
+  border-color: rgba(15,23,42,.18);
+}
+
+/* Use .card on these */
+.service-card, .testimonial-card, .signup-card, .contact-form { border-radius:16px; }
+.service-card, .testimonial-card, .signup-card, .contact-form { border:1px solid rgba(15,23,42,.10); }
+.service-card, .testimonial-card, .signup-card, .contact-form { background:#fff; }
+
+/* Alternate section background for gentle rhythm */
+.section-alt { background: var(--surface); }
+
+/* Metrics row */
+.metrics {
+  display:grid; grid-template-columns: repeat(3, minmax(0,1fr));
+  gap:1rem; margin-top:1.25rem;
+}
+.metric {
+  padding:1rem; border:1px solid rgba(15,23,42,.08); border-radius:12px; background:#fff; text-align:center;
+}
+.metric .num { font-family:'Playfair Display', serif; font-size:1.6rem; line-height:1; }
+.metric .label { color: var(--muted); font-size:.9rem; }
+
+/* Logo strip */
+.logos {
+  display:flex; flex-wrap:wrap; gap:1.25rem; align-items:center; opacity:.9;
+}
+.logos img {
+  height:28px; filter: grayscale(100%); opacity:.75; transition: opacity .2s ease;
+}
+.logos img:hover { opacity:1; }
+
+/* Buttons: tiny refinement */
+.btn { padding:0.9rem 1.1rem; border-radius:12px; }
 
   <style>
     /* Base */
@@ -244,15 +306,15 @@
       <h2 class="section-heading">How I Can Help You</h2>
       <p class="section-subheading">Strategic content solutions tailored to your business needs</p>
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card card">
           <h3>Content Audit & Analysis</h3>
           <p>Discover what's working, what's not, and why across your digital ecosystem. I’ll analyze your existing content and provide actionable insights to improve performance.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card card">
           <h3>Content Strategy Development</h3>
           <p>Get a comprehensive content strategy aligned with your business goals, audience needs, and current market trends.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card card">
           <h3>Content Distribution & Promotion</h3>
           <p>Get the most mileage out of your content so you’re working smarter and reaching more customers.</p>
         </div>
@@ -261,7 +323,7 @@
   </section>
 
   <!-- Newsletter -->
-  <section class="newsletter" id="newsletter">
+  <section class="newsletter section-alt" id="newsletter">
     <div class="container">
       <div class="newsletter-content">
         <div class="newsletter-text">
