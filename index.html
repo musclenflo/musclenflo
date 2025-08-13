@@ -14,21 +14,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <style>
-    /* ===== Theme: Seafoam + Coral ===== */
-   :root{
-  --bg:#FBFEFD;          /* page */
+:root{
+  --bg:#FFF9F1;          /* warm paper */
   --surface:#FFFFFF;     /* cards */
-  --ink:#0B1220;         /* deep navy text */
-  --muted:#616A78;       /* secondary */
-  --accent:#FF6A3D;      /* tangerine pop */
-  --accent-100:#FFE6DB;  /* soft wash */
-  --accent-200:#FFCDBF;
-  --accent-700:#B34823;
-  --teal:#12B5A6;        /* secondary accent */
-  --border:rgba(11,18,32,.12);
-  --ring:rgba(255,106,61,.24);
-  --radius:16px;
-    }
+  --ink:#1B1E1A;         /* espresso text */
+  --muted:#6F756B;       /* secondary */
+  --accent:#E25D3D;      /* persimmon */
+  --accent-100:#FFE2D6;  /* wash */
+  --accent-200:#FFC7B6;
+  --accent-700:#9C3C26;
+  --teal:#2D8F7F;        /* sage-leaning teal */
+  --forest:#1F5C4D;      /* deep sage */
+  --cream:#FFF3E0;       /* alt band bg */
+
 
     html{scroll-behavior:smooth;}
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -77,6 +75,11 @@
     .underline{
       position:relative; display:inline-block; padding-bottom:.35rem;
     }
+  h1{ letter-spacing:-0.02em; }
+h2{ letter-spacing:-0.01em; }
+.section-heading{ margin-bottom:.35rem; }
+.section-subheading{ margin-bottom:1.6rem; }
+
     .underline::after{
       content:""; position:absolute; left:50%; transform:translateX(-50%);
       bottom:-6px; width:110px; height:6px; border-radius:6px;
@@ -109,18 +112,18 @@
   transition: transform .06s ease, box-shadow .2s ease, opacity .15s ease;
   box-shadow: 0 6px 18px rgba(255,106,61,.28);
 }
-.btn:hover{ transform: translateY(-1px); opacity:1; box-shadow:0 10px 24px rgba(255,106,61,.34); }
-
-.btn-ghost{
-  background:transparent;
-  color:var(--ink);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:.9rem 1.2rem;
-  font-weight:700;
+.btn{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, #fff) 0%, var(--accent) 100%);
+  color:#fff; border:1.5px solid var(--accent-700);
+  border-radius:14px; padding:.95rem 1.25rem; font-weight:800;
+  box-shadow:0 6px 0 color-mix(in srgb, var(--accent-700) 35%, #0000);
+  transform:translateY(0); transition:transform .08s ease, box-shadow .08s ease;
 }
-.btn-ghost:hover{ background: color-mix(in srgb, var(--teal) 10%, #fff); border-color: color-mix(in srgb, var(--teal) 30%, #e5e7eb); }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 8px 0 color-mix(in srgb, var(--accent-700) 35%, #0000); }
+.btn:active{ transform:translateY(0); box-shadow:0 3px 0 color-mix(in srgb, var(--accent-700) 35%, #0000); }
 
+.btn-ghost{ border-color: color-mix(in srgb, var(--forest) 35%, #e5e7eb); }
+.btn-ghost:hover{ background: color-mix(in srgb, var(--forest) 10%, #fff); }
 
     /* ===== Fun separators ===== */
     .scallop{
@@ -164,7 +167,7 @@
       box-shadow:0 2px 6px rgba(0,0,0,.12);
     }
     .hero-photo{
-      width:210px; height:210px; object-fit:cover; border-radius:14px; display:block;
+      width:230px; height:230px; object-fit:cover; border-radius:14px; display:block;
     }
     .hero-left{ display:flex; justify-content:center; align-items:center; }
 
@@ -265,10 +268,59 @@
   background: linear-gradient(90deg, var(--accent), var(--teal));
   margin-top:.45rem;
 }
-    body{
+ body{ background: var(--bg); }
+
+  /* Checker band */
+.band-checker{
+  --c1: var(--forest);
+  --c2: #fff;
   background:
-    radial-gradient(color-mix(in srgb, var(--ink) 7%, #fff) 1px, transparent 1px) 0 0 / 18px 18px,
-    var(--bg);
+    linear-gradient(45deg, var(--c1) 25%, transparent 25%) 0 0/24px 24px,
+    linear-gradient(-45deg, var(--c1) 25%, transparent 25%) 0 12px/24px 24px,
+    linear-gradient(45deg, transparent 75%, var(--c1) 75%) 12px -12px/24px 24px,
+    linear-gradient(-45deg, transparent 75%, var(--c1) 75%) -12px 0/24px 24px;
+  height:28px; opacity:.85;
+}
+
+/* Wavy separator (soft retro) */
+.wave{
+  position:relative; height:20px; background:var(--cream);
+}
+.wave::before{
+  content:""; position:absolute; inset:-18px 0 auto 0; height:36px;
+  background:
+   radial-gradient(18px 18px at 18px 18px,#0000 98%,var(--bg)) 0 0/36px 36px,
+   linear-gradient(var(--bg),var(--bg)) top/100% 50% no-repeat;
+}
+/* Badge */
+.badge{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-weight:800; font-size:.82rem; text-transform:uppercase; letter-spacing:.08em;
+  background:var(--accent-100); border:1.5px solid var(--accent);
+  border-radius:999px; padding:.5rem .75rem; color:var(--accent-700);
+  box-shadow:2px 2px 0 var(--accent);
+}
+
+/* Doodle stars */
+.starburst{ position:relative; }
+.starburst::after{
+  content:"✶"; position:absolute; font-size:1.25rem; color:var(--teal); opacity:.8;
+  transform:rotate(-8deg);
+  top:-8px; right:-18px;
+}
+  .card, .service, .t-card{
+  border:1.5px solid color-mix(in srgb, var(--forest) 15%, #0000);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ink) 10%, #0000);
+}
+.service h3{ font-weight:800; }
+  .ticket{
+  clip-path: polygon(0% 10px, 10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px),
+                    calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px));
+}
+  .section-textured{
+  background:
+    radial-gradient(color-mix(in srgb, var(--forest) 10%, #fff) 1px, transparent 1px) 0 0/18px 18px,
+    var(--cream);
 }
   </style>
 </head>
@@ -303,6 +355,7 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="container hero-grid">
+      <div class="band-checker" aria-hidden="true" style="--c1: var(--forest); height:22px; opacity:.95;"></div>
       <!-- left: polaroid intro -->
       <div class="hero-left">
         <div class="polaroid" aria-hidden="true">
@@ -317,25 +370,28 @@
 
       <!-- right: value prop -->
       <div class="hero-right">
+        <span class="badge">availability: open Q4</span>
         <div class="eyebrow">Content Strategy, End-to-End</div>
-        <h1>I help teams turn ideas into <span class="swash">high-value content</span>—fast.</h1>
+        <h1>I help teams turn ideas into <span class="starburst swash">high-value content</span>—fast.</h1>
         <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
 
         <div class="chips">
           <span class="chip"><i class="fa-solid fa-gauge-high"></i> ROI-focused</span>
           <span class="chip"><i class="fa-regular fa-lightbulb"></i> Clear next steps</span>
           <span class="chip"><i class="fa-solid fa-rocket"></i> No fluff</span>
+          <span class="chip"><i class="fa-solid fa-wand-magic-sparkles"></i> pattern-friendly</span>
         </div>
 
         <div class="hero-cta">
-          <a href="#contact" class="btn">Start a project</a>
+          <a href="#contact" class="btn" aria-label="Start a project – go to contact form">Start a project</a>
           <a href="#services" class="btn-ghost">See how I help</a>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="scallop" aria-hidden="true"></div>
+<div class="band-checker" aria-hidden="true"></div>
+
 
   <!-- ABOUT -->
   <section class="about" id="about">
@@ -344,7 +400,7 @@
       <p class="section-subheading">Creative writing roots. Strategy brain. Results obsessed.</p>
 
       <div class="cards">
-        <div class="card">
+        <div class="service ticket">
           I’ve spent 10+ years helping B2B and B2C teams ship content, build systems, and publish content that actually performs. I’m direct, collaborative, and relentlessly practical. If it doesn’t move goals, we don’t do it.
         </div>
         <div class="card">
@@ -360,7 +416,8 @@
     </div>
   </section>
 
-  <div class="scallop" aria-hidden="true"></div>
+<div class="wave" aria-hidden="true"></div>
+
 
   <!-- SERVICES -->
   <section class="services" id="services">
@@ -369,19 +426,23 @@
       <p class="section-subheading">From “we’re not sure where to start” to “this is working.”</p>
 
       <div class="grid">
-        <div class="service">
+       <div class="service">
+  <div class="eyebrow">audit</div>
           <h3>Content Audit & Direction</h3>
           <p>What to keep, kill, and fix—plus a priority roadmap aligned to business goals.</p>
         </div>
-        <div class="service">
+       <div class="service">
+  <div class="eyebrow">audit</div>
           <h3>Messaging & Strategy</h3>
           <p>Positioning, narrative, and a practical plan across web, email, social, and video.</p>
         </div>
         <div class="service">
+  <div class="eyebrow">audit</div>
           <h3>Hands-On Creation</h3>
           <p>Copy, scripts, briefs, outlines, and finished assets—done with you or for you.</p>
         </div>
-        <div class="service">
+       <div class="service">
+  <div class="eyebrow">audit</div>
           <h3>Distribution & Optimization</h3>
           <p>Repurposing, channel fit, and iteration based on what actually performs.</p>
         </div>
@@ -389,15 +450,15 @@
     </div>
   </section>
 
-  <div class="scallop" aria-hidden="true"></div>
+ <div class="band-checker" aria-hidden="true"></div>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
+  <section class="testimonials section textured" id="testimonials">
     <div class="container">
       <h2 class="section-heading underline">What Clients Say</h2>
 
       <div class="grid">
-        <div class="t-card">
+        <div class="t-service ticket">
           <blockquote>
             If you need it done, she will figure out a way. She's a skilled strategist who can quickly zero in on pain points and deliver actionable solutions. She not only does the work, she sets you up so you learn how to manage once her work is done.
           </blockquote>
@@ -411,7 +472,7 @@
           <p class="client-name">— Rebecca H., Education Services</p>
         </div>
 
-        <div class="t-card">
+        <div class="t-service ticket">
           <blockquote>
             She took the time to understand who we are and what makes our brand unique, then delivered fresh insights, trend breakdowns, and data-backed strategies tailored to our goals. Her guidance gave us clarity and confidence, and now we’re seeing real momentum in both growth and content quality.
           </blockquote>
@@ -421,7 +482,7 @@
     </div>
   </section>
 
-  <div class="scallop" aria-hidden="true"></div>
+<div class="band-checker" aria-hidden="true"></div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
