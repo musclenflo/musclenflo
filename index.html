@@ -14,19 +14,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 
   <style>
-    /* ===== Base / Theme ===== */
+    /* ===== Theme ===== */
     :root{
-      --bg:#FAFAF8;         /* page */
-      --surface:#FFFFFF;    /* cards */
-      --ink:#111827;        /* text (graphite) */
-      --muted:#6B7280;      /* secondary */
-      --accent:#C0841A;     /* brass/amber */
+      --bg:#FAFAF8;          /* page */
+      --surface:#FFFFFF;     /* cards */
+      --ink:#111827;         /* graphite */
+      --muted:#6B7280;       /* secondary */
+      --accent:#C0841A;      /* brass/amber */
       --accent-100:#FEF3C7;
-      --accent-200:#FDE68A;
       --accent-700:#92400E;
       --border:rgba(17,24,39,.12);
       --ring:rgba(192,132,26,.22);
       --radius:16px;
+      --scallop-base: color-mix(in srgb, var(--accent) 12%, #fff);
     }
 
     html{scroll-behavior:smooth;}
@@ -36,11 +36,11 @@
       color:var(--ink); background:var(--bg);
     }
     h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:700; line-height:1.2;}
-    h1{font-size:2.25rem;}
+    h1{font-size:2.45rem;}
     a{color:var(--ink); text-decoration:none;}
     a:hover{color:var(--accent);}
     .container{max-width:1200px; margin:0 auto; padding:0 16px;}
-    section{padding:4.5rem 0; scroll-margin-top:92px;}
+    section{padding:4.8rem 0; scroll-margin-top:92px;}
 
     /* ===== Header ===== */
     header{
@@ -66,120 +66,168 @@
 
     /* ===== Utilities ===== */
     .eyebrow{letter-spacing:.08em; text-transform:uppercase; font-weight:700; font-size:.8rem; color:var(--muted);}
-    .section-heading{text-align:center; font-size:2.1rem; margin-bottom:.5rem;}
+    .section-heading{
+      text-align:center; font-size:2.2rem; margin-bottom:.6rem; position:relative;
+    }
+    .section-heading::after{
+      content:""; display:block; width:84px; height:6px; margin:.7rem auto 0;
+      background:linear-gradient(90deg, color-mix(in srgb, var(--accent) 25%, #fff), var(--accent-100));
+      border-radius:999px;
+    }
     .section-subheading{text-align:center; color:var(--muted); margin-bottom:2.25rem;}
 
-    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.75rem 0 1.25rem;}
+    /* Chips */
+    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:.95rem 0 1.4rem;}
     .chip{
       display:inline-flex; align-items:center; gap:.45rem;
-      padding:.45rem .7rem; border-radius:999px;
-      background:var(--accent-100); /* fallback */
+      padding:.48rem .72rem; border-radius:999px;
+      background: color-mix(in srgb, var(--accent) 10%, #fff);
       border:1px solid var(--border);
       color:var(--ink); font-weight:600; font-size:.92rem;
     }
-    /* override with color-mix when supported */
-    .chip{ background: color-mix(in srgb, var(--accent) 10%, #fff); }
     .chip i{ color:var(--accent); font-size:.92rem; }
 
-    /* Buttons */
+    /* Buttons with subtle shine */
     .btn{
-      background:var(--accent);
-      color:#fff;
-      border:1px solid transparent;
-      border-radius:12px;
-      padding:.9rem 1.2rem;
-      font-weight:700;
-      transition:opacity .15s ease;
+      position:relative; overflow:hidden;
+      background:var(--accent); color:#fff; border:1px solid transparent;
+      border-radius:12px; padding:.9rem 1.2rem; font-weight:700;
+      transition:transform .02s, opacity .15s ease, box-shadow .15s ease;
+      box-shadow:0 6px 14px rgba(192,132,26,.18);
     }
-    .btn:hover{ opacity:.9; }
-    .btn:focus-visible,
-    .btn-ghost:focus-visible{
-      outline: none;
-      box-shadow: 0 0 0 3px var(--ring);
+    .btn::after{
+      content:""; position:absolute; inset:0; transform:translateX(-120%);
+      background:linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 45%, transparent 60%);
+      transition:transform .5s ease;
     }
+    .btn:hover{ opacity:.95; box-shadow:0 8px 18px rgba(192,132,26,.22); }
+    .btn:hover::after{ transform:translateX(120%); }
+    .btn:active{ transform:translateY(1px); }
 
     .btn-ghost{
-      background:transparent;
-      color:var(--ink);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:.9rem 1.2rem;
-      font-weight:700;
+      background:transparent; color:var(--ink);
+      border:1px solid var(--border); border-radius:12px;
+      padding:.9rem 1.2rem; font-weight:700;
     }
     .btn-ghost:hover{ background:var(--accent-100); }
 
-    /* Pattern bar (subtle checker) */
-    .pattern-bar{
-      height:14px;
-      background-image:
-        linear-gradient(45deg, rgba(0,0,0,.12) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.12) 75%),
-        linear-gradient(45deg, rgba(0,0,0,.12) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.12) 75%);
-      background-size:18px 18px;
-      background-position:0 0, 9px 9px;
-      opacity:.65;
-      border-top:6px solid color-mix(in srgb, var(--accent) 18%, #fff);
+    /* ===== Hero — with soft abstract shapes ===== */
+    .hero{
+      padding-top:7.6rem; padding-bottom:3.2rem; position:relative; isolation:isolate;
+      background:
+        radial-gradient(60% 80% at 18% 8%, #fff 0 40%, transparent 41%),
+        radial-gradient(40% 60% at 95% 10%, color-mix(in srgb, var(--accent) 14%, #fff) 0 40%, transparent 41%);
+    }
+    .hero::before, .hero::after{
+      content:""; position:absolute; inset:-80px -20px auto -20px; height:280px; z-index:-1;
+      filter:blur(16px); pointer-events:none;
+    }
+    .hero::before{
+      background:radial-gradient(600px 220px at 15% 15%, color-mix(in srgb, var(--accent) 22%, #fff), transparent 70%);
+      opacity:.8;
+    }
+    .hero::after{
+      right:-40px; left:auto;
+      background:radial-gradient(500px 220px at 85% 10%, color-mix(in srgb, var(--accent) 10%, #fff), transparent 70%);
+      opacity:.7;
     }
 
-    /* ===== HERO ===== */
-    .hero{padding-top:7.5rem; padding-bottom:2.5rem;}
     .hero-grid{display:grid; gap:1.75rem; align-items:center;}
     @media (min-width:900px){ .hero-grid{grid-template-columns:240px 1fr;} }
 
+    .hero-left{ display:flex; justify-content:center; align-items:center; }
     .polaroid{
       position:relative; display:inline-block; background:#fff;
       padding:14px 14px 28px; border:1px solid var(--border);
       border-radius:14px; box-shadow:0 12px 30px rgba(17,24,39,.14);
       transform:rotate(-2.2deg);
+      transition:transform .25s ease, box-shadow .25s ease;
     }
     .polaroid::before{
       content:""; position:absolute; top:10px; left:12px; width:46px; height:14px;
       background:color-mix(in srgb, var(--accent) 35%, #fff);
       opacity:.85; border-radius:2px; transform:rotate(-6deg);
     }
+    .polaroid:hover{ transform:rotate(-1deg) translateY(-2px); box-shadow:0 16px 36px rgba(17,24,39,.18); }
+
     .hero-photo{
-      width:190px; height:190px; object-fit:cover;
-      border-radius:12px; display:block;
+      width:190px; height:190px; object-fit:cover; border-radius:12px; display:block;
     }
-    .hero-left{ display:flex; justify-content:center; align-items:center; }
-
-    .hero-right h1{margin:.4rem 0 .4rem;}
+    .hero-right h1{margin:.35rem 0 .45rem; letter-spacing:.1px;}
     .hero-right p{color:var(--muted); max-width:58ch;}
-    .hero-cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.6rem;}
+    .hero-cta{display:flex; gap:.7rem; flex-wrap:wrap; margin-top:.7rem;}
 
-    /* ===== ABOUT ===== */
+    /* ===== Scalloped divider ===== */
+    .scallop{
+      height:26px; background:var(--scallop-base); position:relative;
+      mask:
+        radial-gradient(14px 14px at 13px 0, #0000 98%, #000 101%) 0 100%/28px 14px repeat-x,
+        linear-gradient(#000, #000);
+      -webkit-mask:
+        radial-gradient(14px 14px at 13px 0, #0000 98%, #000 101%) 0 100%/28px 14px repeat-x,
+        linear-gradient(#000, #000);
+    }
+
+    /* ===== Section textures (very subtle dotted grids) ===== */
+    .has-dots{ position:relative; }
+    .has-dots::before{
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(17,24,39,.06) 1px, transparent 1px);
+      background-size:22px 22px;
+      opacity:.35;
+    }
+
+    /* ===== About / Services ===== */
     .about .cards{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;
     }
     .about .card{
       background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
       padding:1.1rem 1.1rem 1rem;
+      box-shadow:0 4px 10px rgba(17,24,39,.04);
     }
 
-    /* ===== SERVICES ===== */
     .services .grid{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
       gap:1rem; align-items:stretch;
     }
     .service{
-      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:var(--radius); padding:1.25rem;
+      box-shadow:0 4px 10px rgba(17,24,39,.04);
     }
     .service h3{margin-bottom:.35rem; font-size:1.2rem;}
     .service p{color:var(--muted);}
 
-    /* ===== TESTIMONIALS ===== */
+    /* ===== Testimonials ===== */
     .testimonials .grid{
       display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1rem;
     }
     .t-card{
-      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-      padding:1.25rem;
+      position:relative;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:var(--radius); padding:1.25rem;
+      box-shadow:0 6px 12px rgba(17,24,39,.05);
+      overflow:hidden;
     }
-    .client-name{font-weight:700; text-align:right; color:var(--muted); margin-top:.5rem;}
+    .t-card .client-name{font-weight:700; text-align:right; color:var(--muted); margin-top:.5rem;}
+    /* Watermark number for the email streamlining win */
+    .t-card[data-watermark="70"]::after{
+      content:"70%";
+      position:absolute; right:10px; bottom:-8px; z-index:0;
+      font-family:'Playfair Display', serif; font-weight:700;
+      font-size:clamp(56px, 12vw, 120px); line-height:.9;
+      color:var(--accent-100);
+      letter-spacing:-0.02em; pointer-events:none;
+    }
+    .t-card > *{ position:relative; z-index:1; }
 
-    /* ===== CONTACT ===== */
+    /* ===== Contact ===== */
     .contact .form{
       max-width:600px; margin:0 auto; background:var(--surface);
       border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem;
+      box-shadow:0 6px 12px rgba(17,24,39,.06);
     }
     label{display:block; font-weight:600; color:var(--ink); margin-bottom:.35rem;}
     input, textarea{
@@ -188,6 +236,9 @@
     }
     input:focus, textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--ring);}
     .hint{color:var(--muted); font-size:.9rem;}
+
+    /* Focus */
+    .btn:focus-visible, .btn-ghost:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--ring); }
 
     /* Small tweak */
     @media (max-width:768px){ .hero h1{font-size:2.1rem;} }
@@ -221,16 +272,12 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" id="home">
+  <section class="hero has-dots" id="home">
     <div class="container hero-grid">
       <!-- left column -->
       <div class="hero-left">
-        <div class="polaroid">
-          <img src="https://i.imgur.com/nQFkVBU.jpeg"
-               alt="Paige Lockhart"
-               class="hero-photo"
-               width="190" height="190"
-               decoding="async" fetchpriority="high">
+        <div class="polaroid" aria-hidden="true">
+          <img src="https://i.imgur.com/nQFkVBU.jpeg" alt="Paige Lockhart" class="hero-photo" width="190" height="190" decoding="async" fetchpriority="high"/>
         </div>
       </div>
 
@@ -254,10 +301,10 @@
     </div>
   </section>
 
-  <div class="pattern-bar" aria-hidden="true"></div>
+  <div class="scallop" aria-hidden="true"></div>
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section class="about has-dots" id="about">
     <div class="container">
       <h2 class="section-heading">About Me</h2>
       <p class="section-subheading">Creative writing roots. Strategy brain. Results obsessed.</p>
@@ -270,7 +317,7 @@
           <strong>What clients get:</strong>
           <ul style="margin:.5rem 0 0 1.1rem; color:var(--muted);">
             <li>Clear priorities and a plan you’ll actually use</li>
-            <li>Messaging that sharpens what you sell & why it matters</li>
+            <li>Messaging that sharpens what you sell &amp; why it matters</li>
             <li>Strategic frameworks, briefs, and content calendars</li>
             <li>Signals over noise (trends + platform insights)</li>
           </ul>
@@ -279,21 +326,21 @@
     </div>
   </section>
 
-  <div class="pattern-bar" aria-hidden="true"></div>
+  <div class="scallop" aria-hidden="true"></div>
 
   <!-- SERVICES -->
-  <section class="services" id="services">
+  <section class="services has-dots" id="services">
     <div class="container">
       <h2 class="section-heading">How I Can Help</h2>
       <p class="section-subheading">From “we’re not sure where to start” to “this is working.”</p>
 
       <div class="grid">
         <div class="service">
-          <h3>Content Audit & Direction</h3>
+          <h3>Content Audit &amp; Direction</h3>
           <p>What to keep, kill, and fix—plus a priority roadmap aligned to business goals.</p>
         </div>
         <div class="service">
-          <h3>Messaging & Strategy</h3>
+          <h3>Messaging &amp; Strategy</h3>
           <p>Positioning, narrative, and a practical plan across web, email, social, and video.</p>
         </div>
         <div class="service">
@@ -301,17 +348,17 @@
           <p>Copy, scripts, briefs, outlines, and finished assets—done with you or for you.</p>
         </div>
         <div class="service">
-          <h3>Distribution & Optimization</h3>
+          <h3>Distribution &amp; Optimization</h3>
           <p>Repurposing, channel fit, and iteration based on what actually performs.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="pattern-bar" aria-hidden="true"></div>
+  <div class="scallop" aria-hidden="true"></div>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
+  <section class="testimonials has-dots" id="testimonials">
     <div class="container">
       <h2 class="section-heading">What Clients Say</h2>
 
@@ -321,7 +368,7 @@
           <p class="client-name">— Stefanie W., Government Agency</p>
         </div>
 
-        <div class="t-card">
+        <div class="t-card" data-watermark="70">
           <p>“Paige reduced our team's lengthy and complex content creation time by 70%, taking us from 150 email journeys and 500 different templates to less than 25 journeys and 20 templates that deliver the same value to our prospects and students.”</p>
           <p class="client-name">— Rebecca H., Education Services</p>
         </div>
@@ -334,10 +381,10 @@
     </div>
   </section>
 
-  <div class="pattern-bar" aria-hidden="true"></div>
+  <div class="scallop" aria-hidden="true"></div>
 
   <!-- CONTACT -->
-  <section class="contact" id="contact">
+  <section class="contact has-dots" id="contact">
     <div class="container">
       <h2 class="section-heading">Let's Work Together</h2>
       <p class="section-subheading">Tell me where you are and what you’re aiming for. I’ll respond with next steps.</p>
@@ -370,12 +417,12 @@
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer style="background:#0b1220; color:#f8fafc; text-align:center; padding:2.2rem 0;">
     <div class="container">
       <p>&copy; 2025 Paige Lockhart | Content Strategist</p>
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/lockhartpaige" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:paige.lockhart@gmail.com" target="_blank" rel="noopener">Email</a>
+      <div class="social-links" style="margin-top:.6rem;">
+        <a href="https://www.linkedin.com/in/lockhartpaige" target="_blank" rel="noopener" style="color:#f8fafc; margin:0 .5rem;">LinkedIn</a>
+        <a href="mailto:paige.lockhart@gmail.com" target="_blank" rel="noopener" style="color:#f8fafc; margin:0 .5rem;">Email</a>
       </div>
     </div>
   </footer>
@@ -389,23 +436,18 @@
 
       if (menuToggle && navLinks) {
         menuToggle.setAttribute('aria-expanded', 'false');
-
         const toggle = () => {
           navLinks.classList.toggle('active');
-          const expanded = navLinks.classList.contains('active');
-          menuToggle.setAttribute('aria-expanded', String(expanded));
+          menuToggle.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
         };
-
         menuToggle.addEventListener('click', toggle);
         menuToggle.addEventListener('keypress', (e) => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
         });
-
-        // Close on link click and reset aria state
         document.querySelectorAll('.nav-links a').forEach(link =>
           link.addEventListener('click', () => {
             navLinks.classList.remove('active');
-            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.setAttribute('aria-expanded','false');
           })
         );
       }
