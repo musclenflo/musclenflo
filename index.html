@@ -120,16 +120,17 @@
   .btn-ghost:hover{ background: color-mix(in srgb, var(--forest) 10%, #fff); }
 
   /* Pattern bands */
-  .band-checker{
-    --c1: var(--forest);
-    --c2: #fff;
-    background:
-      linear-gradient(45deg, var(--c1) 25%, transparent 25%) 0 0/24px 24px,
-      linear-gradient(-45deg, var(--c1) 25%, transparent 25%) 0 12px/24px 24px,
-      linear-gradient(45deg, transparent 75%, var(--c1) 75%) 12px -12px/24px 24px,
-      linear-gradient(-45deg, transparent 75%, var(--c1) 75%) -12px 0/24px 24px;
-    height:28px; opacity:.9;
-  }
+.band-checker {
+  --c1: color-mix(in srgb, var(--forest) 90%, white);
+  --c2: #F6FAF8; /* airy pale sage backdrop */
+  background:
+    linear-gradient(45deg, var(--c1) 25%, var(--c2) 25%) 0 0/18px 18px,
+    linear-gradient(-45deg, var(--c1) 25%, var(--c2) 25%) 0 9px/18px 18px,
+    linear-gradient(45deg, var(--c2) 75%, var(--c1) 75%) 9px -9px/18px 18px,
+    linear-gradient(-45deg, var(--c2) 75%, var(--c1) 75%) -9px 0/18px 18px;
+  height: 24px;
+  opacity: 0.85;
+}
   .wave{
     position:relative; height:20px; background:var(--cream);
   }
