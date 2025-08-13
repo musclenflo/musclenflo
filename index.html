@@ -63,10 +63,6 @@ header {
 .is-scrolled header {
   box-shadow: 0 6px 24px rgba(0,0,0,.06);
   background: #fff;
-}const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
-onScroll();
-window.addEventListener('scroll', onScroll);
-
   nav{display:flex; align-items:center; justify-content:space-between;}
   .logo a{font-weight:800; font-size:1.25rem; padding-right:1.25rem;}
   .nav-links{display:flex; list-style:none; gap:1.25rem;}
@@ -504,62 +500,72 @@ window.addEventListener('scroll', onScroll);
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Mobile menu
-    const menuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (menuToggle && navLinks) {
-      menuToggle.setAttribute('aria-expanded', 'false');
+<!-- Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Header shadow on scroll
+  const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll);
 
-      const toggle = () => {
-        navLinks.classList.toggle('active');
-        const expanded = navLinks.classList.contains('active');
-        menuToggle.setAttribute('aria-expanded', String(expanded));
-      };
+  // Mobile menu
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.setAttribute('aria-expanded', 'false');
 
-      menuToggle.addEventListener('click', toggle);
-      menuToggle.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-      });
+    const toggle = () => {
+      navLinks.classList.toggle('active');
+      const expanded = navLinks.classList.contains('active');
+      menuToggle.setAttribute('aria-expanded', String(expanded));
+    };
 
-      document.querySelectorAll('.nav-links a').forEach(link =>
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        })
-      );
-    }
+    menuToggle.addEventListener('click', toggle);
+    menuToggle.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
 
-    // Formspree helper
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('contactStatus');
-    if (form && statusEl) {
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        statusEl.textContent = 'Sending…';
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form)
-          });
-          if (res.ok) {
-            form.reset();
-            statusEl.textContent = 'Thanks! Your submission was received.';
-          } else {
-            const data = await res.json().catch(() => ({}));
-            statusEl.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
-              ? data.errors[0].message
-              : 'Something went wrong. Please try again.';
-          }
-        } catch {
-          statusEl.textContent = 'Network error. Please try again.';
+    document.querySelectorAll('.nav-links a').forEach(link =>
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+  }
+
+  // Formspree helper
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('contactStatus');
+  if (form && statusEl) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      statusEl.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = 'Thanks! Your submission was received.';
+        } else {
+          const data = await res.json().catch(() => ({}));
+          statusEl.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
+            ? data.errors[0].message
+            : 'Something went wrong. Please try again.';
         }
-      });
-    }
-  });
-  </script>
+      } catch {
+        statusEl.textContent = 'Network error. Please try again.';
+      }
+    });
+  }
+});
+</script>
+
+  const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+onScroll();
+window.addEventListener('scroll', onScroll);
+
 </body>
 </html>
