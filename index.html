@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="/favicon.ico">
-<meta property="og:title" content="Paige Lockhart | Content Strategist">
-<meta property="og:description" content="I help teams turn ideas into high-value content—fast.">
-<meta property="og:image" content="https://www.paige-lockhart.com/og-cover.jpg">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
+  <link rel="alternate icon" href="/favicon.ico">
+  <meta property="og:title" content="Paige Lockhart | Writer & ASMR Creator">
+  <meta property="og:description" content="Short fiction, soft surrealities, and other small transformations.">
+  <meta property="og:image" content="https://www.paige-lockhart.com/og-cover.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paige Lockhart | Content Strategist</title>
-  
+  <title>Paige Lockhart | Writer</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -34,7 +33,7 @@
     --accent-700:#9C3C26;
     --teal:#2D8F7F;        /* sage-leaning teal */
     --forest:#1F5C4D;      /* deep sage */
-    --sage:#F6FAF8;       /* alt band bg */
+    --sage:#F6FAF8;        /* alt band bg */
     --border:rgba(0,0,0,.12);
     --ring:rgba(226,93,61,.25);
     --radius:16px;
@@ -56,39 +55,37 @@
   .container{max-width:1200px; margin:0 auto; padding:0 18px;}
   section{padding:5rem 0; scroll-margin-top:92px;}
 
-/* ===== Header ===== */
-header{
-  position:fixed; top:0; left:0; right:0; z-index:1000;
-  background:#fff; box-shadow:0 1px 0 rgba(15,23,42,.06);
-  padding:1rem 0;
-  transition: box-shadow .2s ease, background .2s ease;
-}
-
-.is-scrolled header{
-  box-shadow: 0 6px 24px rgba(0,0,0,.06);
-  background: #fff;
-}
-
-/* (these were accidentally nested—keep them OUTSIDE) */
-nav{display:flex; align-items:center; justify-content:space-between;}
-.logo a{font-weight:800; font-size:1.25rem; padding-right:1.25rem;}
-.nav-links{display:flex; list-style:none; gap:1.25rem;}
-.nav-links a{font-weight:500;}
-.mobile-menu-toggle{display:none; flex-direction:column; width:30px; height:21px; cursor:pointer;}
-.mobile-menu-toggle span{height:3px; width:100%; background:var(--ink); border-radius:3px;}
-
-@media (max-width:768px){
-  .mobile-menu-toggle{display:flex;}
-  .nav-links{
-    position:fixed; top:64px; left:0; right:0; background:#fff;
-    flex-direction:column; align-items:center; padding:1rem 0;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-    transform:translateY(-150%); transition:transform .25s ease;
+  /* ===== Header ===== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:#fff; box-shadow:0 1px 0 rgba(15,23,42,.06);
+    padding:1rem 0;
+    transition: box-shadow .2s ease, background .2s ease;
   }
-  .nav-links.active{transform:translateY(0);}
-  .hero h1{font-size:1.9rem;}
-}
 
+  .is-scrolled header{
+    box-shadow: 0 6px 24px rgba(0,0,0,.06);
+    background: #fff;
+  }
+
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .logo a{font-weight:800; font-size:1.25rem; padding-right:1.25rem;}
+  .nav-links{display:flex; list-style:none; gap:1.25rem;}
+  .nav-links a{font-weight:500;}
+  .mobile-menu-toggle{display:none; flex-direction:column; width:30px; height:21px; cursor:pointer;}
+  .mobile-menu-toggle span{height:3px; width:100%; background:var(--ink); border-radius:3px;}
+
+  @media (max-width:768px){
+    .mobile-menu-toggle{display:flex;}
+    .nav-links{
+      position:fixed; top:64px; left:0; right:0; background:#fff;
+      flex-direction:column; align-items:center; padding:1rem 0;
+      box-shadow:0 5px 15px rgba(0,0,0,.08);
+      transform:translateY(-150%); transition:transform .25s ease;
+    }
+    .nav-links.active{transform:translateY(0);}
+    .hero h1{font-size:1.9rem;}
+  }
 
   /* ===== Utilities ===== */
   .eyebrow{letter-spacing:.08em; text-transform:uppercase; font-weight:800; font-size:.78rem; color:var(--muted);}
@@ -103,7 +100,6 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   }
   .hl{ background:linear-gradient(180deg, transparent 62%, var(--accent-100) 62%); }
 
-  /* Chips */
   .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0 1.5rem;}
   .chip{
     display:inline-flex; align-items:center; gap:.45rem;
@@ -114,7 +110,6 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   }
   .chip i{ color: var(--teal); font-size:.92rem; }
 
-  /* Buttons */
   .btn{
     background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, #fff) 0%, var(--accent) 100%);
     color:#fff; border:1.5px solid var(--accent-700);
@@ -136,34 +131,31 @@ nav{display:flex; align-items:center; justify-content:space-between;}
     border-color: color-mix(in srgb, var(--forest) 35%, #e5e7eb);
   }
   .btn-ghost:hover{ background: color-mix(in srgb, var(--forest) 10%, #fff); }
-    .btn:focus-visible, .btn-ghost:focus-visible, a:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px var(--ring);
-      
-}
+  .btn:focus-visible, .btn-ghost:focus-visible, a:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--ring);
+  }
 
-
-  /* Pattern bands */
-.band-checker {
-  --c1: color-mix(in srgb, var(--forest) 90%, white);
-  --c2: #F6FAF8; /* airy pale sage backdrop */
-  background:
-    linear-gradient(45deg, var(--c1) 25%, var(--c2) 25%) 0 0/18px 18px,
-    linear-gradient(-45deg, var(--c1) 25%, var(--c2) 25%) 0 9px/18px 18px,
-    linear-gradient(45deg, var(--c2) 75%, var(--c1) 75%) 9px -9px/18px 18px,
-    linear-gradient(-45deg, var(--c2) 75%, var(--c1) 75%) -9px 0/18px 18px;
-  height: 24px;
-  opacity: 0.85;
-}
-.wave{
-  position:relative; height:18px; background:#F6FAF8; /* matches checker bg */
-}
-.wave::before{
-  content:""; position:absolute; inset:-14px 0 auto 0; height:28px;
-  background:
-    radial-gradient(14px 14px at 14px 14px,#0000 98%, var(--bg)) 0 0/28px 28px,
-    linear-gradient(var(--bg), var(--bg)) top/100% 50% no-repeat;
-}
+  .band-checker {
+    --c1: color-mix(in srgb, var(--forest) 90%, white);
+    --c2: #F6FAF8;
+    background:
+      linear-gradient(45deg, var(--c1) 25%, var(--c2) 25%) 0 0/18px 18px,
+      linear-gradient(-45deg, var(--c1) 25%, var(--c2) 25%) 0 9px/18px 18px,
+      linear-gradient(45deg, var(--c2) 75%, var(--c1) 75%) 9px -9px/18px 18px,
+      linear-gradient(-45deg, var(--c2) 75%, var(--c1) 75%) -9px 0/18px 18px;
+    height: 24px;
+    opacity: 0.85;
+  }
+  .wave{
+    position:relative; height:18px; background:#F6FAF8;
+  }
+  .wave::before{
+    content:""; position:absolute; inset:-14px 0 auto 0; height:28px;
+    background:
+      radial-gradient(14px 14px at 14px 14px,#0000 98%, var(--bg)) 0 0/28px 28px,
+      linear-gradient(var(--bg), var(--bg)) top/100% 50% no-repeat;
+  }
 
   /* ===== HERO ===== */
   .hero{padding-top:7.5rem; padding-bottom:3rem; position:relative; overflow:hidden;}
@@ -183,7 +175,6 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   .hero-grid{display:grid; gap:1.75rem; align-items:center;}
   @media (min-width:900px){ .hero-grid{grid-template-columns:280px 1fr;} }
 
-  /* Polaroid */
   .polaroid{
     position:relative; display:inline-block; background:#fff;
     padding:16px 16px 30px; border:1px solid var(--border);
@@ -205,7 +196,6 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   .hero-right p{color:var(--muted); max-width:62ch;}
   .hero-cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.8rem;}
 
-  /* Badge + doodle */
   .badge{
     display:inline-flex; align-items:center; gap:.45rem;
     font-weight:800; font-size:.82rem; text-transform:uppercase; letter-spacing:.08em;
@@ -230,7 +220,7 @@ nav{display:flex; align-items:center; justify-content:space-between;}
     padding:1.15rem 1.15rem 1.05rem; box-shadow:0 10px 22px rgba(15,29,43,.06);
   }
 
-  /* ===== SERVICES ===== */
+  /* ===== SERVICES / WRITING ===== */
   .services .grid{
     display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:1rem; align-items:stretch;
@@ -240,20 +230,19 @@ nav{display:flex; align-items:center; justify-content:space-between;}
     padding:1.25rem; position:relative; overflow:hidden;
     box-shadow:0 10px 22px rgba(15,29,43,.06);
   }
-  .service::after{ /* tiny corner confetti */
+  .service::after{
     content:""; position:absolute; right:-24px; top:-24px; width:90px; height:90px;
     background:conic-gradient(from 210deg at 50% 50%, var(--accent) 0 25%, transparent 25% 50%, var(--teal) 50% 75%, transparent 75% 100%);
     border-radius:50%; opacity:.08;
   }
-  .service h3{margin-bottom:.35rem; font-size:1.2rem; font-weight:800;}
+  .service h3{margin-bottom:.35rem; font-size:1.1rem; font-weight:800;}
 
-  /* Ticket edge option */
   .ticket{
     clip-path: polygon(0% 10px, 10px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 10px),
                       calc(100% - 10px) 100%, 10px 100%, 0% calc(100% - 10px));
   }
 
-  /* ===== TESTIMONIALS ===== */
+  /* ===== TESTIMONIALS / OTHER PROJECTS ===== */
   .testimonials .grid{
     display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1rem;
   }
@@ -268,12 +257,11 @@ nav{display:flex; align-items:center; justify-content:space-between;}
     font-size:2.2rem; color:var(--accent); opacity:.5; line-height:1;
   }
 
-  /* Optional dotted texture only for one section */
-.section-textured{
-  background:
-    radial-gradient(color-mix(in srgb, var(--forest) 10%, #fff) 1px, transparent 1px) 0 0/18px 18px,
-    #F6FAF8; /* same airy sage as checkers/wave */
-}
+  .section-textured{
+    background:
+      radial-gradient(color-mix(in srgb, var(--forest) 10%, #fff) 1px, transparent 1px) 0 0/18px 18px,
+      #F6FAF8;
+  }
 
   /* ===== CONTACT ===== */
   .contact .form{
@@ -289,19 +277,18 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   input:focus, textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--ring);}
   .hint{color:var(--muted); font-size:.9rem;}
 
-  /* ===== Footer ===== */
   footer{background:#0b1220; color:#f8fafc; text-align:center; padding:2.2rem 0;}
   .social-links{margin-top:.6rem;}
   .social-links a{color:#f8fafc; margin:0 .5rem;}
   .social-links a:hover{color:var(--accent2);}
 
-@media(max-width:540px) {
-  .band-checker {
-    height: 20px;
-    background-size: 16px 16px;
-    opacity: 0.8;
+  @media(max-width:540px) {
+    .band-checker {
+      height: 20px;
+      background-size: 16px 16px;
+      opacity: 0.8;
+    }
   }
-}
   </style>
 </head>
 <body>
@@ -323,8 +310,8 @@ nav{display:flex; align-items:center; justify-content:space-between;}
 
         <ul class="nav-links" id="primary-nav">
           <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#projects">Other Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -334,7 +321,6 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="container hero-grid">
-      <!-- left: polaroid intro -->
       <div class="hero-left">
         <div class="polaroid" aria-hidden="true">
           <img
@@ -346,129 +332,141 @@ nav{display:flex; align-items:center; justify-content:space-between;}
         </div>
       </div>
 
-      <!-- right: value prop -->
       <div class="hero-right">
-        <span class="badge">Availability: Open to new clients</span>
-        <div class="eyebrow">Content Strategy, End-to-End</div>
-        <h1>I help teams turn ideas into <span class="starburst swash">high-value content</span>—fast.</h1>
-        <p>I partner with you to clarify priorities, build a plan you’ll actually use, and ship content that performs. No fluff—just moves that drive ROI.</p>
+        <span class="badge">Short fiction & small transformations</span>
+        <div class="eyebrow">Writer · ASMR Creator · Content Strategist</div>
+        <h1>I write short fiction about <span class="starburst">soft surrealities</span>, strange bodies, and the selves we try on.</h1>
+        <p>
+          I’m a Kansas City–based writer with an MFA in fiction from the University of Tennessee.  
+          My work tends to live where the everyday blurs into the uncanny—identity, performance, tenderness, and the little ways we remake ourselves.
+        </p>
 
         <div class="chips">
-          <span class="chip"><i class="fa-solid fa-gauge-high"></i> ROI-focused</span>
-          <span class="chip"><i class="fa-regular fa-lightbulb"></i> Clear next steps</span>
-          <span class="chip"><i class="fa-solid fa-rocket"></i> No fluff</span>
-          <span class="chip"><i class="fa-solid fa-wand-magic-sparkles"></i> pattern-friendly</span>
+          <span class="chip"><i class="fa-solid fa-feather"></i> Flash & microfiction</span>
+          <span class="chip"><i class="fa-regular fa-moon"></i> Surreal / feminist / dreamy</span>
+          <span class="chip"><i class="fa-solid fa-cat"></i> Bodies, selves, and mischief</span>
+          <span class="chip"><i class="fa-solid fa-volume-low"></i> ASMR & quiet internet art</span>
         </div>
 
         <div class="hero-cta">
-          <a href="#contact" class="btn" aria-label="Start a project – go to contact form">Start a project</a>
-          <a href="#services" class="btn-ghost">See how I help</a>
+          <a href="#writing" class="btn" aria-label="Skip to selected writing">Read my work</a>
+          <a href="#about" class="btn-ghost">More about me</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Thin checker band after hero -->
   <div class="band-checker" aria-hidden="true"></div>
 
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container">
-      <h2 class="section-heading underline">About Me</h2>
-      <p class="section-subheading">Creative writing roots. Strategy brain. Results obsessed.</p>
+      <h2 class="section-heading underline">About</h2>
+      <p class="section-subheading">Fiction first. Many hats, same brain.</p>
 
       <div class="cards">
         <div class="card ticket">
-          I’ve spent 10+ years helping B2B and B2C teams ship content, build systems, and publish content that actually performs. I’m direct, collaborative, and relentlessly practical. If it doesn’t move goals, we don’t do it.
+          <p>
+            I’m a writer and ASMR creator based in Kansas City. I hold an MFA in creative writing from the University of Tennessee, and my fiction and poems have appeared in
+            <em>Bayou Magazine</em>, <em>Weave Magazine</em>, <em>Defenestration</em>, <em>Bear Review</em>, and elsewhere. My microfiction “This Morning I Was French” is forthcoming in <em>Scaffold</em>.
+          </p>
         </div>
         <div class="card">
-          <strong>What clients get:</strong>
-          <ul style="margin:.6rem 0 0 1.1rem; color:var(--muted);">
-            <li>Clear priorities and a plan you’ll actually use</li>
-            <li>Messaging that sharpens what you sell & why it matters</li>
-            <li>Strategic frameworks, briefs, and content calendars</li>
-            <li>Signals over noise (trends + platform insights)</li>
-          </ul>
+          <p>
+            By day, I work as a senior content strategist, helping teams clarify what they’re saying and why it matters. That same curiosity and systems-brain shows up in my fiction: I’m interested in
+            how people narrate themselves, what they choose to believe, and the tiny cracks where reality starts to feel a little off.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Wavy separator -->
   <div class="wave" aria-hidden="true"></div>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
+  <!-- WRITING -->
+  <section class="services" id="writing">
     <div class="container">
-      <h2 class="section-heading underline">How I Can Help</h2>
-      <p class="section-subheading">From “we’re not sure where to start” to “this is working.”</p>
+      <h2 class="section-heading underline">Selected Writing</h2>
+      <p class="section-subheading">A few places my work lives or is on the way.</p>
 
       <div class="grid">
         <div class="service">
-          <div class="eyebrow">audit</div>
-          <h3>Content Audit & Direction</h3>
-          <p>What to keep, kill, and fix—plus a priority roadmap aligned to business goals.</p>
+          <div class="eyebrow">microfiction</div>
+          <h3>This Morning I Was French</h3>
+          <p>
+            A woman tries on selves—French, chimney-sweeper, ice cream, barre—until choosing becomes impossible. Forthcoming in <em>Scaffold</em>.
+          </p>
         </div>
+
         <div class="service">
-          <div class="eyebrow">strategy</div>
-          <h3>Messaging & Strategy</h3>
-          <p>Positioning, narrative, and a practical plan across web, email, social, and video.</p>
+          <div class="eyebrow">poetry & prose</div>
+          <h3>Bayou Magazine · Bear Review</h3>
+          <p>
+            Earlier poems and short work exploring memory, family, and small-town strangeness. Links forthcoming.
+          </p>
         </div>
+
         <div class="service">
-          <div class="eyebrow">creation</div>
-          <h3>Hands-On Creation</h3>
-          <p>Copy, scripts, briefs, outlines, and finished assets—done with you or for you.</p>
+          <div class="eyebrow">archives</div>
+          <h3>Weave Magazine · Defenestration</h3>
+          <p>
+            Older stories with a slightly louder sense of humor, but still very much me—interested in voice, desire, and people behaving almost normally.
+          </p>
         </div>
+
         <div class="service">
-          <div class="eyebrow">optimize</div>
-          <h3>Distribution & Optimization</h3>
-          <p>Repurposing, channel fit, and iteration based on what actually performs.</p>
+          <div class="eyebrow">in progress</div>
+          <h3>New & Ongoing Work</h3>
+          <p>
+            Right now I’m writing more microfiction, a longer story collection about soft catastrophes, and odd little hybrid pieces that may or may not turn into something book-shaped.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Checker band -->
   <div class="band-checker" aria-hidden="true"></div>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials section-textured" id="testimonials">
+  <!-- OTHER PROJECTS -->
+  <section class="testimonials section-textured" id="projects">
     <div class="container">
-      <h2 class="section-heading underline">What Clients Say</h2>
+      <h2 class="section-heading underline">Other Projects</h2>
+      <p class="section-subheading">The rest of the orbit: ASMR, live performance, and content strategy.</p>
 
       <div class="grid">
         <div class="t-card ticket">
           <blockquote>
-            If you need it done, she will figure out a way. She's a skilled strategist who can quickly zero in on pain points and deliver actionable solutions. She not only does the work, she sets you up so you learn how to manage once her work is done.
+            I make ASMR videos and livestreams as <strong>pAigeSMR</strong>, where I play with character, intimacy, sound, and quiet weirdness. It’s another way of exploring voice and closeness—just with a microphone instead of the page.
           </blockquote>
-          <p class="client-name">— Stefanie W., Government Agency</p>
+          <p class="client-name"><a href="https://www.tiktok.com/@paigesmr1" target="_blank" rel="noopener">TikTok · pAigeSMR</a></p>
         </div>
 
         <div class="t-card">
           <blockquote>
-            Paige reduced our team's lengthy and complex content creation time by 70%, taking us from 150 email journeys and 500 different templates to less than 25 journeys and 20 templates that deliver the same value to our prospects and students.
+            I also perform improv and sketch comedy, which keeps my writing loose, collaborative, and very alive. A lot of my favorite sentences started as something I said onstage and couldn’t quite let go of.
           </blockquote>
-          <p class="client-name">— Rebecca H., Education Services</p>
+          <p class="client-name">Kansas City comedy & improv</p>
         </div>
 
         <div class="t-card ticket">
           <blockquote>
-            She took the time to understand who we are and what makes our brand unique, then delivered fresh insights, trend breakdowns, and data-backed strategies tailored to our goals. Her guidance gave us clarity and confidence, and now we’re seeing real momentum in both growth and content quality.
+            Professionally, I work as a senior content strategist, partnering with brands to build clearer journeys and more thoughtful systems. If you’re here for that side of my work, I’m still available for select projects.
           </blockquote>
-          <p class="client-name">— Lyndon Wade, Founder, Tiki Taco</p>
+          <p class="client-name"><a href="#contact">Get in touch about strategy work</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Checker band -->
   <div class="band-checker" aria-hidden="true"></div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="container">
-      <h2 class="section-heading underline">Let's Work Together</h2>
-      <p class="section-subheading">Tell me where you are and what you’re aiming for. I’ll respond with next steps.</p>
+      <h2 class="section-heading underline">Say Hello</h2>
+      <p class="section-subheading">
+        Editors, collaborators, and curious people—I’d love to hear from you.
+      </p>
 
       <div class="form">
         <form id="contactForm" action="https://formspree.io/f/xrbljoja" method="POST">
@@ -483,14 +481,13 @@ nav{display:flex; align-items:center; justify-content:space-between;}
           </div>
 
           <div class="form-group" style="margin-bottom:1rem;">
-            <label for="message">What do you need?</label>
-            <textarea id="message" name="message" rows="5" placeholder="A few sentences are great. Links welcome."></textarea>
+            <label for="message">What’s on your mind?</label>
+            <textarea id="message" name="message" rows="5" placeholder="A note about a piece, a collaboration idea, or just hi."></textarea>
           </div>
 
-          <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none"/>
 
-          <button type="submit" class="btn">Send Message</button>
+          <button type="submit" class="btn">Send message</button>
           <p id="contactStatus" class="hint" style="text-align:center; margin-top:.8rem;"></p>
         </form>
       </div>
@@ -500,7 +497,7 @@ nav{display:flex; align-items:center; justify-content:space-between;}
   <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Paige Lockhart | Content Strategist</p>
+      <p>&copy; 2025 Paige Lockhart | Writer & Content Strategist</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/lockhartpaige" target="_blank" rel="noopener">LinkedIn</a>
         <a href="mailto:paige.lockhart@gmail.com" target="_blank" rel="noopener">Email</a>
@@ -508,68 +505,65 @@ nav{display:flex; align-items:center; justify-content:space-between;}
     </div>
   </footer>
 
-<!-- Scripts -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Header shadow on scroll
-  const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
-  onScroll();
-  window.addEventListener('scroll', onScroll);
+  <!-- Scripts -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const onScroll = () => document.body.classList.toggle('is-scrolled', window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
 
-  // Mobile menu
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (menuToggle && navLinks) {
-    menuToggle.setAttribute('aria-expanded', 'false');
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+      menuToggle.setAttribute('aria-expanded', 'false');
 
-    const toggle = () => {
-      navLinks.classList.toggle('active');
-      const expanded = navLinks.classList.contains('active');
-      menuToggle.setAttribute('aria-expanded', String(expanded));
-    };
+      const toggle = () => {
+        navLinks.classList.toggle('active');
+        const expanded = navLinks.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', String(expanded));
+      };
 
-    menuToggle.addEventListener('click', toggle);
-    menuToggle.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-    });
+      menuToggle.addEventListener('click', toggle);
+      menuToggle.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
 
-    document.querySelectorAll('.nav-links a').forEach(link =>
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      })
-    );
-  }
+      document.querySelectorAll('.nav-links a').forEach(link =>
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        })
+      );
+    }
 
-  // Formspree helper
-  const form = document.getElementById('contactForm');
-  const statusEl = document.getElementById('contactStatus');
-  if (form && statusEl) {
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      statusEl.textContent = 'Sending…';
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-        if (res.ok) {
-          form.reset();
-          statusEl.textContent = 'Thanks! Your submission was received.';
-        } else {
-          const data = await res.json().catch(() => ({}));
-          statusEl.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
-            ? data.errors[0].message
-            : 'Something went wrong. Please try again.';
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('contactStatus');
+    if (form && statusEl) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        statusEl.textContent = 'Sending…';
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          if (res.ok) {
+            form.reset();
+            statusEl.textContent = 'Thanks! Your message was received.';
+          } else {
+            const data = await res.json().catch(() => ({}));
+            statusEl.textContent = (data && data.errors && data.errors[0] && data.errors[0].message)
+              ? data.errors[0].message
+              : 'Something went wrong. Please try again.';
+          }
+        } catch {
+          statusEl.textContent = 'Network error. Please try again.';
         }
-      } catch {
-        statusEl.textContent = 'Network error. Please try again.';
-      }
-    });
-  }
-});
-</script>
+      });
+    }
+  });
+  </script>
 
 </body>
 </html>
