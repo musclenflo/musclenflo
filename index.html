@@ -4,7 +4,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate icon" href="/favicon.ico">
   <meta property="og:title" content="Paige Lockhart | Writer">
-  <meta property="og:description" content="The website of writer and content strategist Paige Lockhart.">
+  <meta property="og:description" content="Writer and content strategist based in Kansas City, Missouri.">
   <meta property="og:image" content="https://www.paige-lockhart.com/og-cover.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -22,16 +22,13 @@
 
   <style>
   :root{
-    --bg:#FFF9F1;
+    --bg:#FFFDF8;
     --surface:#FFFFFF;
     --ink:#1B1E1A;
     --muted:#6F756B;
     --accent:#E25D3D;
-    --accent-100:#FFE2D6;
     --accent-700:#9C3C26;
     --teal:#2D8F7F;
-    --forest:#1F5C4D;
-    --sage:#F6FAF8;
     --border:rgba(0,0,0,.12);
     --ring:rgba(226,93,61,.25);
     --radius:16px;
@@ -116,11 +113,9 @@
   }
   .btn-ghost:hover{background:#fff;}
 
-  .band-checker {
-    background:#F6FAF8;
-    border-top:1px solid rgba(0,0,0,.04);
-    border-bottom:1px solid rgba(0,0,0,.04);
-    height:22px;
+  .divider{
+    border-top:1px solid rgba(0,0,0,.06);
+    margin:0;
   }
 
   /* Hero */
@@ -151,7 +146,7 @@
   .hero-right p{color:var(--muted); max-width:46ch; font-size:.98rem;}
   .hero-cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;}
 
-  /* About cards */
+  /* Cards / sections */
   .about .cards{
     display:grid; grid-template-columns:1fr; gap:1rem;
   }
@@ -161,7 +156,6 @@
     font-size:.97rem;
   }
 
-  /* Writing list */
   .writing-list{
     display:grid;
     grid-template-columns:1fr;
@@ -186,6 +180,13 @@
     margin-bottom:.35rem;
   }
 
+  .brands-list{
+    margin-top:.6rem;
+    padding-left:1.1rem;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+
   /* Contact */
   .contact .form{
     max-width:640px; margin:0 auto; background:var(--surface);
@@ -207,7 +208,7 @@
   .social-links a:hover{color:var(--accent);}
 
   @media(max-width:540px) {
-    .band-checker {height:18px;}
+    section{padding:3.5rem 0;}
   }
   </style>
 </head>
@@ -230,6 +231,7 @@
 
         <ul class="nav-links" id="primary-nav">
           <li><a href="#writing">Writing</a></li>
+          <li><a href="#brands">For Brands</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -254,44 +256,97 @@
 
       <div class="hero-right">
         <div class="eyebrow">Writer · Content Strategist</div>
-        <h1>Short fiction, and the rest of the mess.</h1>
+        <h1>Writer &amp; content strategist based in Kansas City.</h1>
         <p>
-          I’m a writer based in Kansas City with an MFA from the University of Tennessee.  
-          I write short fiction, poetry, and sketches. I also work as a senior content strategist on brands like Wendy's, Microsoft, Coca-Cola, and more.
+          I have an MFA from the University of Tennessee and write short fiction, poetry, and sketches.  
+          I also work as a senior content strategist on brands like Wendy’s, Microsoft, Coca-Cola, and more.
         </p>
 
         <div class="hero-cta">
           <a href="#writing" class="btn"><i class="fa-solid fa-book-open"></i> Read writing</a>
-          <a href="#about" class="btn-ghost">More about me</a>
+          <a href="#brands" class="btn-ghost">For brands</a>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="band-checker" aria-hidden="true"></div>
+  <hr class="divider" />
 
   <!-- WRITING -->
   <section id="writing">
     <div class="container">
       <h2 class="section-heading underline">Selected Writing</h2>
       <p class="section-subheading">
-        A few places my work has appeared.
+        A few places my creative work has appeared.
       </p>
 
+      <div class="writing-list">
         <div class="piece">
-          <div class="piece-title">Poems & Short Work</div>
-          <div class="piece-meta"><em>[Bayou Magazine](https://bayoumagazine.wordpress.com/issue-61/)</em>, <em>[Bear Review](https://bearreview.wordpress.com/)</em></div>
+          <div class="piece-title">This Morning I Was French</div>
+          <div class="piece-meta">Microfiction · <em>Scaffold</em> (forthcoming)</div>
+          <p>Microfiction about changing your mind about who you are, and then going a little too far.</p>
+        </div>
+
+        <div class="piece">
+          <div class="piece-title">Poems &amp; short work</div>
+          <div class="piece-meta">
+            <em><a href="https://bayoumagazine.wordpress.com/issue-61/" target="_blank" rel="noopener">Bayou Magazine</a></em>,
+            <em><a href="https://bearreview.wordpress.com/" target="_blank" rel="noopener">Bear Review</a></em>
+          </div>
+          <p>Poems and shorter pieces in literary journals.</p>
         </div>
 
         <div class="piece">
           <div class="piece-title">Archive</div>
-          <div class="piece-meta"><em>[Weave Magazine](https://www.amazon.com/Weave-Magazine-10-Contributors/dp/1495280497)</em>, <em>[Defenestration](https://www.defenestrationmag.net/2015/06/lifelong-bed-rest-living-the-dream-by-paige-lockhart/)</em>, and elsewhere</div>
+          <div class="piece-meta">
+            <em><a href="https://www.amazon.com/Weave-Magazine-10-Contributors/dp/1495280497" target="_blank" rel="noopener">Weave Magazine</a></em>,
+            <em><a href="https://www.defenestrationmag.net/2015/06/lifelong-bed-rest-living-the-dream-by-paige-lockhart/" target="_blank" rel="noopener">Defenestration</a></em>,
+            and elsewhere
+          </div>
+          <p>Some of the first stories and poems I published, still very much part of the same brain.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="band-checker" aria-hidden="true"></div>
+  <hr class="divider" />
+
+  <!-- FOR BRANDS -->
+  <section id="brands">
+    <div class="container">
+      <h2 class="section-heading underline">For Brands</h2>
+      <p class="section-subheading">
+        Writing and content strategy for teams who care about voice, systems, and results.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <p>
+            By day, I’m a senior content strategist at a global agency. I help teams untangle messy ecosystems,
+            clarify what they’re saying, and build content that actually gets used.
+          </p>
+          <ul class="brands-list">
+            <li>Planning and writing for complex websites and campaigns</li>
+            <li>Content audits and frameworks that make decisions easier</li>
+            <li>Collaborating with UX, design, and performance teams</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p>
+            I’ve worked on brands including Wendy’s, Microsoft, Mazda, Coca-Cola, and others — often in the spaces
+            where storytelling, structure, and data have to sit in the same room.
+          </p>
+          <p style="margin-top:.6rem;">
+            If you’re interested in collaborating on brand work, you can reach me through the contact form below
+            or via LinkedIn.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
 
   <!-- ABOUT -->
   <section class="about" id="about">
@@ -301,23 +356,27 @@
       <div class="cards">
         <div class="card">
           <p>
-            I am a writer based in Kansas City, Missouri. I received my MFA in creative writing from the University of Tennessee, and my work has appeared in
+            I am a writer based in Kansas City, Missouri. I received my MFA in creative writing from the University
+            of Tennessee, and my work has appeared in
             <em>Bayou Magazine</em>, <em>Weave Magazine</em>, <em>Defenestration</em>, <em>Bear Review</em>, and other publications.
           </p>
         </div>
         <div class="card">
           <p>
-            Outside of fiction, I work as a senior content strategist, helping teams clarify what they’re saying and how it reaches people. That background tends to shape how I think about stories too—structure, attention, and the little details people carry around.
+            Outside of fiction, I work as a senior content strategist, helping teams clarify what they’re saying and how it
+            reaches people. That background tends to shape how I think about stories too — structure, attention, and
+            the little details people carry around.
           </p>
           <p style="margin-top:.6rem;">
-            I also occasionally make ASMR videos under the name pAigeSMR. Check [them](https://www.tiktok.com/@paigesmr1) out if you're into that kind of thing.
+            I also occasionally make ASMR videos under the name pAigeSMR. You can find them
+            <a href="https://www.tiktok.com/@paigesmr1" target="_blank" rel="noopener">here</a> if you’re into that kind of thing.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="band-checker" aria-hidden="true"></div>
+  <hr class="divider" />
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
